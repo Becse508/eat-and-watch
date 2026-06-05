@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MegDánelz | Rendelés</title>
+    <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <components-navbar>
+      <components-title class="brand montserrat black">Kosár</components-title>
+      <div class="nav-right">
+        <components-theme-toggle></components-theme-toggle>
+        <components-button
+          url="/order"
+          class="back-btn"
+          background="rgb(255, 0, 70)"
+          >&Cross;</components-button
+        >
+      </div>
+    </components-navbar>
+    <main>
+      <div id="products"></div>
+
+      <section class="order-summary">
+        <div class="order-summary__left">
+          <span class="order-summary__label inter regular">Összesen</span>
+          <span class="order-summary__total inter bold" id="order-total"></span>
+          <components-button class="finalize-button black"
+            >Véglegesítés</components-button
+          >
+        </div>
+
+        <div class="order-summary__right">
+          <components-radio
+            name="payment"
+            value="counter"
+            label="Átvétel a pultnál"
+            checked
+          ></components-radio>
+          <components-radio
+            name="payment"
+            value="now"
+            label="Fizetés most"
+            disabled
+          ></components-radio>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/cart.ts"></script>
+  </body>
+</html>

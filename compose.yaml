@@ -1,0 +1,16 @@
+services:
+  api:
+    build: ./api
+    ports:
+      - "5130:5130"
+    environment:
+      - ASPNETCORE_URLS=http://+:5130
+    volumes:
+      - ./api/MegDanelzAPI/data.db:/app/data.db
+
+  web:
+    build: ./weboldal
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api

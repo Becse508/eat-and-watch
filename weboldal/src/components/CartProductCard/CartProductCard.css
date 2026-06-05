@@ -1,0 +1,224 @@
+components-cart-productcard {
+  display: flex;
+  flex-direction: column;
+  transition: 0.1s all;
+  border-radius: 50px;
+  padding: 10px 50px;
+  align-items: stretch;
+}
+
+components-cart-productcard .main-row {
+  display: flex;
+  gap: 1%;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+components-cart-productcard .main-row components-button {
+  font-size: 3rem;
+}
+
+components-cart-productcard:hover {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.05);
+}
+components-cart-productcard .ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  padding-left: 140px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 300ms ease, opacity 200ms ease, transform 200ms ease;
+}
+
+components-cart-productcard .ingredients.expanded {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+components-cart-productcard .ingredients p {
+  color: var(--text-tertiary);
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: 1.3;
+  padding-left: 16px;
+  border-left: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+components-cart-productcard .image-wrapper {
+  position: relative;
+  max-width: 120px;
+  width: fit-content;
+  pointer-events: none;
+  user-select: none;
+}
+
+components-cart-productcard img {
+  display: block;
+  max-width: inherit;
+  z-index: 1;
+}
+
+components-cart-productcard .image-wrapper::before {
+  content: "";
+  width: 90px;
+  height: 90px;
+  background: var(--ingredient-bg);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+components-cart-productcard h3 {
+  color: var(--text-secondary);
+  font-size: 2rem;
+  margin: 0;
+}
+
+components-cart-productcard .item-price {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin: 4px 0 0;
+}
+
+components-cart-productcard .item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+components-cart-productcard .quantity-control {
+  display: flex;
+  align-items: center;
+  background: var(--bg-primary);
+  border: 1px solid var(--notification-bg);
+  border-radius: 999px;
+  height: 48px;
+  width: 180px;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+components-cart-productcard .qty-btn {
+  flex: 0 0 56px;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 22px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+components-cart-productcard .qty-btn:focus-visible {
+  outline: 2px solid var(--border-color);
+  outline-offset: -2px;
+}
+
+components-cart-productcard .qty-dec {
+  border-radius: 999px 0 0 999px;
+}
+
+components-cart-productcard .qty-inc {
+  border-radius: 0 999px 999px 0;
+}
+
+components-cart-productcard .qty-btn:hover {
+  background: var(--notification-bg);
+  border-color: var(--border-color);
+}
+
+components-cart-productcard .qty-input {
+  flex: 1 1 auto;
+  height: 100%;
+  border: none;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  outline: none;
+  min-width: 0;
+}
+
+/* remove default spinners */
+components-cart-productcard .qty-input::-webkit-outer-spin-button,
+components-cart-productcard .qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+components-cart-productcard .qty-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media screen and (max-width: 768px) {
+  components-cart-productcard {
+    padding: 10px 0;
+    margin: 6px 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  components-cart-productcard .main-row {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  components-cart-productcard:hover {
+    background-color: transparent;
+  }
+
+  components-cart-productcard .image-wrapper {
+    max-width: 110px;
+  }
+
+  components-cart-productcard .quantity-control {
+    margin-left: 0;
+    width: 160px !important;
+  }
+
+  components-cart-productcard .quantity-container {
+    margin-top: 32px;
+    flex-direction: row-reverse;
+    margin-left: 0;
+  }
+
+  components-cart-productcard .quantity-container components-button {
+    padding: 0;
+    font-size: 2rem;
+  }
+
+  components-cart-productcard .qty-input {
+    font-size: 24px !important;
+  }
+
+  components-cart-productcard .item-info {
+    min-width: 240px;
+    text-align: center;
+  }
+
+  components-cart-productcard .ingredients.expanded {
+    padding: 0;
+  }
+}

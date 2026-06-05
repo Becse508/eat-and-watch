@@ -1,0 +1,45 @@
+components-showcase {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  width: 70%;
+  margin-bottom: 64px;
+}
+
+.showcase-image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+@media screen and (max-width: 64rem) {
+  components-showcase {
+    flex-direction: column !important;
+    gap: 24px;
+    padding-bottom: 64px;
+  }
+
+  components-showcase:not(:last-of-type) {
+    border-bottom: 1px solid var(--text-secondary);
+  }
+
+  .text-start,
+  .text-end {
+    text-align: center !important;
+  }
+
+  components-showcase p {
+    text-align: center !important;
+  }
+}

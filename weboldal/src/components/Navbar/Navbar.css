@@ -1,0 +1,28 @@
+components-navbar {
+  display: flex;
+  min-height: 100px;
+  height: fit-content;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 48rem) {
+  components-navbar {
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  components-navbar components-title {
+    font-size: 2rem;
+  }
+
+  components-navbar components-button a,
+  components-navbar components-button span {
+    font-size: 1rem;
+  }
+}

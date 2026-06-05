@@ -1,0 +1,46 @@
+components-notification {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+
+  background-color: var(--notification-bg);
+  color: var(--text-primary);
+  border-radius: 20px;
+  padding: 0 20px;
+
+  animation: notif-slide 3.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+components-notification h3 {
+  font-size: 2rem;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+components-notification p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+}
+
+@keyframes notif-slide {
+  0% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  15% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  85% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}

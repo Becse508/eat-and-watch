@@ -1,0 +1,14 @@
+body {
+  color: var(--text-primary);
+  padding-bottom: 64px;
+}
+
+main {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+section:not(:last-of-type) {
+  margin-bottom: 64px;
+}

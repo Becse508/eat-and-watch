@@ -1,0 +1,40 @@
+main.orders-page {
+  min-height: 100vh;
+  background: var(--background-color);
+  padding: 32px 24px;
+  box-sizing: border-box;
+  display: block;
+}
+
+* {
+  user-select: none;
+}
+
+.orders-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+  color: var(--text-muted);
+}
+
+.orders-status {
+  color: var(--text-secondary);
+  font-family: "Inter", sans-serif;
+  margin-bottom: 16px;
+}
+
+.order-done {
+  background-color: var(--status-success) !important;
+}
+
+.order-card {
+  transition: 150ms all ease;
+}
+.order-card:hover {
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.2);
+  transform: translateY(-2px) scale(1.01);
+}

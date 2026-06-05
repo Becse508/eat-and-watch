@@ -1,0 +1,26 @@
+components-button {
+  height: fit-content;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  width: fit-content;
+  opacity: 1;
+  cursor: pointer;
+  min-height: 1rem;
+  min-width: 1rem;
+}
+
+components-button a {
+  color: unset;
+  text-decoration: none;
+}
+
+components-button a:visited {
+  color: unset;
+  text-decoration: none;
+}
+
+components-button:hover {
+  opacity: 0.8;
+}

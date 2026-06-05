@@ -1,0 +1,134 @@
+:root {
+  --background-color: #0d0d0d;
+  --bg-primary: #151515;
+  --notification-bg: #333333;
+  --button-primary: #dd862f;
+  --button-secondary: #ffffff;
+  --text-primary: #fcfcfc;
+  --text-secondary: #f5f5f5;
+  --text-tertiary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --text-special: #000;
+  --border-color: #f5f5f5;
+  --image-bg: #111;
+  --card-shadow: rgba(0, 0, 0, 0.35);
+  --hover-shadow: rgba(0, 0, 0, 0.45);
+  --accent-color: #ffd966;
+  --ingredient-bg: rgba(255, 255, 255, 0.07);
+  --radio-checked-color: #ffffff;
+  --radio-unchecked-color: #d7d7d7;
+  --radio-disabled-color: #6d6d6d;
+  --status-success: #1b5e20;
+  --status-disabled: #b3b3b3;
+  --footer-text: #666;
+  --footer-link: #ff0046;
+  --footer-separator: #ccc;
+
+  --theme-mode: dark;
+}
+
+:root.light-mode {
+  --background-color: #f5f5f5;
+  --bg-primary: #ffffff;
+  --notification-bg: #e8e8e8;
+  --button-primary: #dd862f;
+  --button-secondary: #1a1a1a;
+  --text-primary: #1a1a1a;
+  --text-secondary: #333333;
+  --text-tertiary: rgba(0, 0, 0, 0.85);
+  --text-muted: rgba(0, 0, 0, 0.65);
+  --text-special: #fff;
+  --border-color: #cccccc;
+  --image-bg: #f0f0f0;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --hover-shadow: rgba(0, 0, 0, 0.15);
+  --accent-color: #ff9500;
+  --ingredient-bg: rgba(0, 0, 0, 0.05);
+  --radio-checked-color: #1a1a1a;
+  --radio-unchecked-color: #999999;
+  --radio-disabled-color: #cccccc;
+  --status-success: #2e7d32;
+  --status-disabled: #999999;
+  --footer-text: #666;
+  --footer-link: #ff0046;
+  --footer-separator: #999;
+
+  --theme-mode: light;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--background-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.stick-top {
+  position: sticky;
+  top: 0;
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.komika {
+  font-family: "Komika Axis", sans-serif;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.black {
+  font-weight: 800;
+}
+
+.font-regular-24px {
+  font-size: 24px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 128px;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+.back-btn {
+  font-weight: 800;
+}
