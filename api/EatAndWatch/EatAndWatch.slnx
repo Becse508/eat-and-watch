@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EatAndWatch/EatAndWatch.csproj" />
+  <Project Path="Entities/Entities.csproj" />
+</Solution>

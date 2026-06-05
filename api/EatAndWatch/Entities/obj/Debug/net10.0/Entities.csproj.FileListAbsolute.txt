@@ -1,0 +1,12 @@
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.deps.json
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.dll
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.pdb
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.AssemblyInfoInputs.cache
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.AssemblyInfo.cs
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.csproj.CoreCompileInputs.cache
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.sourcelink.json
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.dll
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\refint\Entities.dll
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.pdb
+C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\ref\Entities.dll

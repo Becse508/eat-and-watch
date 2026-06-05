@@ -1,0 +1,6 @@
+@EatAndWatch_HostAddress = http://localhost:5144
+
+GET {{EatAndWatch_HostAddress}}/products/
+Accept: application/json
+
+###
