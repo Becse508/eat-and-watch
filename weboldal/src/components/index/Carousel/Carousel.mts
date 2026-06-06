@@ -36,8 +36,8 @@ export default class MovieCarousel extends HTMLElement {
     this.innerHTML = `
       <section class="movie">
         <div class="movie__left">
-          <h1 class="movie__title"></h1>
-          <p class="movie__desc"></p>
+          <h1 class="movie__title">Válogass filmeink közül</h1>
+          <p class="movie__desc">Egy kis nasi kíséretében</p>
         </div>
 
         <div class="movie__right">
@@ -68,8 +68,8 @@ export default class MovieCarousel extends HTMLElement {
 
     if (!this.titleEl || !this.descEl || !this.imgEl) return;
 
-    this.titleEl.textContent = movie.name;
-    this.descEl.textContent = movie.description;
+    // this.titleEl.textContent = movie.name;
+    // this.descEl.textContent = movie.description;
     this.imgEl.src = movie.image;
     this.imgEl.alt = movie.name;
   }
