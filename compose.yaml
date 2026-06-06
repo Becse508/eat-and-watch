@@ -2,7 +2,7 @@ services:
   api:
     build: ./api/EatAndWatch
     ports:
-      - "5130:5144"
+      - "5144:5144"
     environment:
       - ASPNETCORE_URLS=http://+:5144
     volumes:

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MegDánelz | Főoldal</title>
+    <title>Eat&Watch</title>
     <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +15,7 @@
   <body>
     <components-navbar>
       <components-title class="brand montserrat black"
-        >MegDánelz</components-title
+        >Eat&Watch</components-title
       >
       <div class="nav-right">
         <components-theme-toggle></components-theme-toggle>
@@ -25,32 +25,9 @@
       </div>
     </components-navbar>
     <main>
-      <components-showcase
-        image="https://files.catbox.moe/lljkv7.png"
-        alt="Pestisburger"
-        title="Kolera csak 1499 Ft-ért!"
-        direction="left"
-        >Próbáld ki Lakatos Armando Alejandro ínyencségét egy speciális
-        meglepetéssel! Csak a Megiben.</components-showcase
-      >
-      <components-showcase
-        image="https://files.catbox.moe/4n4jr4.png"
-        alt="Furcsa szendvics"
-        title="Ez milyen szendvics?!"
-        direction="right"
-        >Meleged van, de nem akarsz alsógatyában flangálni a nagykörúton? Itt az
-        idő lehülni!</components-showcase
-      >
-      <components-showcase
-        image="https://files.catbox.moe/5tqu1u.png"
-        alt="Kutyaburger"
-        title="Eleged van az ugatásból?"
-        direction="left"
-        >Végre csöndben lesznek a kis vakarcsok! Hozd a saját alapanyagod 20%
-        kedvezményért!</components-showcase
-      >
+      <components-moviecarousel></components-moviecarousel>
     </main>
     <components-footer></components-footer>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/index.ts"></script>
   </body>
 </html>
