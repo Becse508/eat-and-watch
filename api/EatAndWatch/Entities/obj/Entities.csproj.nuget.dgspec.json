@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Becse\\.iskola\\ikt\\eatandwatch\\project\\api\\EatAndWatch\\Entities\\Entities.csproj": {}
+    "C:\\Users\\Pearoo\\Documents\\GitHub\\eat-and-watch\\api\\EatAndWatch\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Becse\\.iskola\\ikt\\eatandwatch\\project\\api\\EatAndWatch\\Entities\\Entities.csproj": {
+    "C:\\Users\\Pearoo\\Documents\\GitHub\\eat-and-watch\\api\\EatAndWatch\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Becse\\.iskola\\ikt\\eatandwatch\\project\\api\\EatAndWatch\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Pearoo\\Documents\\GitHub\\eat-and-watch\\api\\EatAndWatch\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Becse\\.iskola\\ikt\\eatandwatch\\project\\api\\EatAndWatch\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\kisbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Becse\\.iskola\\ikt\\eatandwatch\\project\\api\\EatAndWatch\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\Pearoo\\Documents\\GitHub\\eat-and-watch\\api\\EatAndWatch\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Pearoo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Pearoo\\Documents\\GitHub\\eat-and-watch\\api\\EatAndWatch\\Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kisbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Pearoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,7 +40,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -65,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
