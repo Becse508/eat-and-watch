@@ -10,3 +10,15 @@ C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net1
 C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\refint\Entities.dll
 C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.pdb
 C:\Becse\.iskola\ikt\eatandwatch\project\api\EatAndWatch\Entities\obj\Debug\net10.0\ref\Entities.dll
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.deps.json
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.dll
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\bin\Debug\net10.0\Entities.pdb
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.AssemblyInfoInputs.cache
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.AssemblyInfo.cs
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.csproj.CoreCompileInputs.cache
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.sourcelink.json
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.dll
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\refint\Entities.dll
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\Entities.pdb
+C:\Users\Pearoo\Documents\GitHub\eat-and-watch\api\EatAndWatch\Entities\obj\Debug\net10.0\ref\Entities.dll
