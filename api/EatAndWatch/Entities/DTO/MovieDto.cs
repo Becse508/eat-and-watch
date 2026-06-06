@@ -12,5 +12,9 @@ namespace Entities.DTO
         public string? Image { get; set; }
         public TimeOnly Length { get; set; }
         public DateOnly ReleaseDate { get; set; }
+        public string OriginalTitle { get; set; }
+        public string Director { get; set; }
+        public IEnumerable<string> MainCharacters { get; set; } = [];
+        public int AgeRestriction { get; set; }
     }
 }

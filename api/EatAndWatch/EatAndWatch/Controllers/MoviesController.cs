@@ -36,6 +36,11 @@ namespace EatAndWatch.Controllers
                 Tags = m.Tags,
                 Length = m.Length,
                 Image = m.Image,
+                AgeRestriction = m.AgeRestriction,
+                Director = m.Director,
+                MainCharacters = m.MainCharacters,
+                OriginalTitle = m.OriginalTitle,
+                ReleaseDate = m.ReleaseDate,
 
                 Screenings = m.Screenings.Select(s => new ScreeningNoMovieDto
                 {
@@ -65,6 +70,11 @@ namespace EatAndWatch.Controllers
                 Tags = m.Tags,
                 Length = m.Length,
                 Image = m.Image,
+                AgeRestriction = m.AgeRestriction,
+                Director = m.Director,
+                MainCharacters = m.MainCharacters,
+                OriginalTitle = m.OriginalTitle,
+                ReleaseDate = m.ReleaseDate,
 
                 Screenings = m.Screenings.Select(s => new ScreeningNoMovieDto
                 {
@@ -91,7 +101,12 @@ namespace EatAndWatch.Controllers
                 Genres = genres,
                 Tags = tags,
                 Length = movieDto.Length,
-                Rating = movieDto.Rating
+                Rating = movieDto.Rating,
+                Director = movieDto.Director,
+                AgeRestriction = movieDto.AgeRestriction,
+                MainCharacters = movieDto.MainCharacters.ToList(),
+                OriginalTitle = movieDto.OriginalTitle,
+                ReleaseDate = movieDto.ReleaseDate,
             };
 
             await _db.Movies.AddAsync(movie);
