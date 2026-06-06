@@ -16,7 +16,12 @@ carousel.movies = [
         tags: [],
         screenings: [],
         length: new Date(0),
-        releaseDate: new Date(0)
+        releaseDate: new Date(0),
+        originalTitle: "",
+        director: "",
+        ageRestriction: 0,
+        mainCharacters: []
     }
 ]
 carousel.movies = await getMovies();
+
