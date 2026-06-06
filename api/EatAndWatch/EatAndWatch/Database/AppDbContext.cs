@@ -45,6 +45,7 @@ namespace EatAndWatch.Database
 
             modelBuilder.Entity<Movie>().HasQueryFilter(m => !m.DeleteTime.HasValue);
             modelBuilder.Entity<MovieScreening>().HasQueryFilter(m => !m.CancelledTime.HasValue);
+            modelBuilder.Entity<Ticket>().HasIndex(t => t.QRCode).IsUnique();
 
             modelBuilder.Entity<Genre>().HasData(
                 new Genre { Id = 1, Name = "Action" },

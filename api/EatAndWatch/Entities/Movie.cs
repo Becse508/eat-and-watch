@@ -15,6 +15,7 @@ namespace Entities
         public int Rating { get; set; }
         public ICollection<Genre> Genres { get; set; } = [];
         public ICollection<Tag> Tags { get; set; } = [];
+        public TimeOnly Length { get; set; }
         public string Image { get; set; }
         [JsonIgnore]
         public ICollection<MovieScreening> Screenings { get; set; } = [];

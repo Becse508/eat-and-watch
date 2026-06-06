@@ -47,7 +47,8 @@ namespace EatAndWatch.Controllers
                 Description = movieDto.Description ?? "",
                 Image = movieDto.Image ?? "https://rotatingsandwiches.com/wp-content/uploads/2023/04/bub-and-pops-italian-hoagie.gif",
                 Genres = genres,
-                Tags = tags
+                Tags = tags,
+                Length = movieDto.Length
             };
 
             await _db.Movies.AddAsync(movie);
@@ -97,7 +98,7 @@ namespace EatAndWatch.Controllers
                 _db.Movies.Remove(movie);
             }
             else
-                movie.DeleteTime = DateTime.Now;
+                movie.DeleteTime = DateTime.UtcNow;
 
             await _db.SaveChangesAsync();
             return Ok();

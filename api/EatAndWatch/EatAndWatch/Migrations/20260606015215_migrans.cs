@@ -8,11 +8,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EatAndWatch.Migrations
 {
     /// <inheritdoc />
-    public partial class migransok : Migration
+    public partial class migrans : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Genres",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Genres", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Movies",
                 columns: table => new
@@ -23,6 +36,7 @@ namespace EatAndWatch.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Rating = table.Column<int>(type: "INTEGER", nullable: false),
+                    Length = table.Column<TimeOnly>(type: "TEXT", nullable: false),
                     Image = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -48,6 +62,19 @@ namespace EatAndWatch.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Transactions",
                 columns: table => new
                 {
@@ -63,22 +90,27 @@ namespace EatAndWatch.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genres",
+                name: "MovieGenres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    MovieId = table.Column<int>(type: "INTEGER", nullable: true)
+                    GenresId = table.Column<int>(type: "INTEGER", nullable: false),
+                    MovieId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genres", x => x.Id);
+                    table.PrimaryKey("PK_MovieGenres", x => new { x.GenresId, x.MovieId });
                     table.ForeignKey(
-                        name: "FK_Genres_Movies_MovieId",
+                        name: "FK_MovieGenres_Genres_GenresId",
+                        column: x => x.GenresId,
+                        principalTable: "Genres",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovieGenres_Movies_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movies",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -89,7 +121,8 @@ namespace EatAndWatch.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CancelledTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     MovieId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Price = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,25 +133,6 @@ namespace EatAndWatch.Migrations
                         principalTable: "Movies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tags",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    MovieId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tags", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tags_Movies_MovieId",
-                        column: x => x.MovieId,
-                        principalTable: "Movies",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -139,6 +153,30 @@ namespace EatAndWatch.Migrations
                         name: "FK_ProductIngredient_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MovieTags",
+                columns: table => new
+                {
+                    MovieId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TagsId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieTags", x => new { x.MovieId, x.TagsId });
+                    table.ForeignKey(
+                        name: "FK_MovieTags_Movies_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MovieTags_Tags_TagsId",
+                        column: x => x.TagsId,
+                        principalTable: "Tags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -171,7 +209,9 @@ namespace EatAndWatch.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     RefundTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     TransactionId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ScreeningId = table.Column<int>(type: "INTEGER", nullable: true)
+                    ScreeningId = table.Column<int>(type: "INTEGER", nullable: true),
+                    QRCode = table.Column<string>(type: "TEXT", nullable: false),
+                    UsedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -219,33 +259,38 @@ namespace EatAndWatch.Migrations
 
             migrationBuilder.InsertData(
                 table: "Genres",
-                columns: new[] { "Id", "MovieId", "Name" },
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, null, "Action" },
-                    { 2, null, "Adventure" },
-                    { 3, null, "Animation" },
-                    { 4, null, "Comedy" },
-                    { 5, null, "Crime" },
-                    { 6, null, "Documentary" },
-                    { 7, null, "Drama" },
-                    { 8, null, "Family" },
-                    { 9, null, "Fantasy" },
-                    { 10, null, "History" },
-                    { 11, null, "Horror" },
-                    { 12, null, "Music" },
-                    { 13, null, "Mystery" },
-                    { 14, null, "Romance" },
-                    { 15, null, "Science Fiction" },
-                    { 16, null, "Thriller" },
-                    { 17, null, "War" },
-                    { 18, null, "Western" }
+                    { 1, "Action" },
+                    { 2, "Adventure" },
+                    { 3, "Animation" },
+                    { 4, "Comedy" },
+                    { 5, "Crime" },
+                    { 6, "Documentary" },
+                    { 7, "Drama" },
+                    { 8, "Family" },
+                    { 9, "Fantasy" },
+                    { 10, "History" },
+                    { 11, "Horror" },
+                    { 12, "Music" },
+                    { 13, "Mystery" },
+                    { 14, "Romance" },
+                    { 15, "Science Fiction" },
+                    { 16, "Thriller" },
+                    { 17, "War" },
+                    { 18, "Western" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Genres_MovieId",
-                table: "Genres",
+                name: "IX_MovieGenres_MovieId",
+                table: "MovieGenres",
                 column: "MovieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieTags_TagsId",
+                table: "MovieTags",
+                column: "TagsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderProducts_OrderId",
@@ -274,9 +319,10 @@ namespace EatAndWatch.Migrations
                 column: "MovieId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tags_MovieId",
-                table: "Tags",
-                column: "MovieId");
+                name: "IX_Tickets_QRCode",
+                table: "Tickets",
+                column: "QRCode",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_ScreeningId",
@@ -293,7 +339,10 @@ namespace EatAndWatch.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "MovieGenres");
+
+            migrationBuilder.DropTable(
+                name: "MovieTags");
 
             migrationBuilder.DropTable(
                 name: "OrderProducts");
@@ -302,10 +351,13 @@ namespace EatAndWatch.Migrations
                 name: "ProductIngredient");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "Tickets");
 
             migrationBuilder.DropTable(
-                name: "Tickets");
+                name: "Genres");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Orders");

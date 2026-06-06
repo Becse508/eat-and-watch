@@ -141,6 +141,9 @@ namespace EatAndWatch.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<TimeOnly>("Length")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -163,6 +166,9 @@ namespace EatAndWatch.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Time")
@@ -296,6 +302,9 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("QRCode")
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime?>("RefundTime")
                         .HasColumnType("TEXT");
 
@@ -305,7 +314,13 @@ namespace EatAndWatch.Migrations
                     b.Property<int>("TransactionId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("UsedAt")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("QRCode")
+                        .IsUnique();
 
                     b.HasIndex("ScreeningId");
 

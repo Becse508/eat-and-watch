@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EatAndWatch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260605225304_migransok")]
-    partial class migransok
+    [Migration("20260606015215_migrans")]
+    partial class migrans
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,16 +26,11 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("Genres");
 
@@ -149,6 +144,9 @@ namespace EatAndWatch.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<TimeOnly>("Length")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -171,6 +169,9 @@ namespace EatAndWatch.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Time")
@@ -289,16 +290,11 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("Tags");
                 });
@@ -309,6 +305,10 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("QRCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<DateTime?>("RefundTime")
                         .HasColumnType("TEXT");
 
@@ -318,7 +318,13 @@ namespace EatAndWatch.Migrations
                     b.Property<int>("TransactionId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("UsedAt")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("QRCode")
+                        .IsUnique();
 
                     b.HasIndex("ScreeningId");
 
@@ -348,11 +354,34 @@ namespace EatAndWatch.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("Entities.Genre", b =>
+            modelBuilder.Entity("GenreMovie", b =>
                 {
-                    b.HasOne("Entities.Movie", null)
-                        .WithMany("Genres")
-                        .HasForeignKey("MovieId");
+                    b.Property<int>("GenresId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("GenresId", "MovieId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieGenres", (string)null);
+                });
+
+            modelBuilder.Entity("MovieTag", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MovieId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("MovieTags", (string)null);
                 });
 
             modelBuilder.Entity("Entities.MovieScreening", b =>
@@ -405,13 +434,6 @@ namespace EatAndWatch.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Entities.Tag", b =>
-                {
-                    b.HasOne("Entities.Movie", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("MovieId");
-                });
-
             modelBuilder.Entity("Entities.Ticket", b =>
                 {
                     b.HasOne("Entities.MovieScreening", "Screening")
@@ -430,13 +452,39 @@ namespace EatAndWatch.Migrations
                     b.Navigation("Transaction");
                 });
 
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.HasOne("Entities.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieTag", b =>
+                {
+                    b.HasOne("Entities.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Entities.Movie", b =>
                 {
-                    b.Navigation("Genres");
-
                     b.Navigation("Screenings");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("Entities.MovieScreening", b =>

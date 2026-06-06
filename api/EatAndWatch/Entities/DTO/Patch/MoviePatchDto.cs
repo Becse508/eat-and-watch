@@ -10,5 +10,6 @@ namespace Entities.DTO.Patch
         public IEnumerable<int>? GenreIds { get; set; } = [];
         public IEnumerable<int>? TagIds { get; set; } = [];
         public string? Image { get; set; }
+        public TimeOnly? Length { get; set; }
     }
 }

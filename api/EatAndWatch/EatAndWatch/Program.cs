@@ -1,8 +1,11 @@
+using EatAndWatch;
 using EatAndWatch.Database;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+TicketTools.Secret = builder.Configuration["TicketSecret"]
+    ?? throw new Exception("'TicketSecret' not set in configuration.");
 
 builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseSqlite(

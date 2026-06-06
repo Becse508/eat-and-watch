@@ -26,11 +26,11 @@ namespace EatAndWatch.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<int>> Post([FromBody] TagGenreDto genreDto)
+        public async Task<ActionResult<int>> Post([FromBody] TagGenreDto tagDto)
         {
             Tag tag = new()
             {
-                Name = genreDto.Name
+                Name = tagDto.Name
             };
 
             await _db.Tags.AddAsync(tag);

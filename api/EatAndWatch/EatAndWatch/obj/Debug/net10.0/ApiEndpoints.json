@@ -504,7 +504,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "genreDto",
+        "Name": "tagDto",
         "Type": "Entities.DTO.TagGenreDto",
         "IsRequired": true
       }
@@ -536,5 +536,73 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EatAndWatch.Controllers.TicketController",
+    "Method": "Post",
+    "RelativePath": "Ticket",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketDto",
+        "Type": "Entities.DTO.TicketDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "EatAndWatch.Controllers.TicketController",
+    "Method": "Delete",
+    "RelativePath": "Ticket/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "EatAndWatch.Controllers.TicketController",
+    "Method": "Validate",
+    "RelativePath": "Ticket/validate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketInfo",
+        "Type": "Entities.DTO.TicketValidationInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

@@ -29,10 +29,10 @@ namespace EatAndWatch.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MovieScreening>> Get(int id)
         {
-            var movie = await _db.ScreeningsWithIncludes.FirstOrDefaultAsync(o => o.Id == id);
-            if (movie == null)
+            var screening = await _db.ScreeningsWithIncludes.FirstOrDefaultAsync(o => o.Id == id);
+            if (screening == null)
                 return NotFound();
-            return movie;
+            return screening;
         }
 
         [HttpPost]
@@ -75,7 +75,7 @@ namespace EatAndWatch.Controllers
 
             if (screening == null) return NotFound();
 
-            screening.CancelledTime = DateTime.Now;
+            screening.CancelledTime = DateTime.UtcNow;
 
             await _db.SaveChangesAsync();
             return Ok();
