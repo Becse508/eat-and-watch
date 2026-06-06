@@ -10,5 +10,6 @@
         public ICollection<Tag> Tags { get; set; } = [];
         public TimeOnly Length { get; set; }
         public string Image { get; set; }
+        public DateOnly ReleaseDate { get; set; }
     }
 }

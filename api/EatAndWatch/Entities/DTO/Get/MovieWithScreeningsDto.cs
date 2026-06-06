@@ -12,5 +12,6 @@
         public string Image { get; set; }
 
         public ICollection<ScreeningNoMovieDto> Screenings { get; set; } = [];
+        public DateOnly ReleaseDate { get; set; }
     }
 }

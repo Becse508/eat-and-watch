@@ -11,5 +11,6 @@ namespace Entities.DTO
         public IEnumerable<int> TagIds { get; set; } = [];
         public string? Image { get; set; }
         public TimeOnly Length { get; set; }
+        public DateOnly ReleaseDate { get; set; }
     }
 }

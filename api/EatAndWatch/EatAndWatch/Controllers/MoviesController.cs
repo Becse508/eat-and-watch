@@ -90,7 +90,8 @@ namespace EatAndWatch.Controllers
                 Image = movieDto.Image ?? "https://rotatingsandwiches.com/wp-content/uploads/2023/04/bub-and-pops-italian-hoagie.gif",
                 Genres = genres,
                 Tags = tags,
-                Length = movieDto.Length
+                Length = movieDto.Length,
+                Rating = movieDto.Rating
             };
 
             await _db.Movies.AddAsync(movie);

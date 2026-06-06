@@ -37,7 +37,8 @@ namespace EatAndWatch.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Rating = table.Column<int>(type: "INTEGER", nullable: false),
                     Length = table.Column<TimeOnly>(type: "TEXT", nullable: false),
-                    Image = table.Column<string>(type: "TEXT", nullable: false)
+                    Image = table.Column<string>(type: "TEXT", nullable: false),
+                    ReleaseDate = table.Column<DateOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -210,7 +211,7 @@ namespace EatAndWatch.Migrations
                     RefundTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     TransactionId = table.Column<int>(type: "INTEGER", nullable: false),
                     ScreeningId = table.Column<int>(type: "INTEGER", nullable: true),
-                    QRCode = table.Column<string>(type: "TEXT", nullable: false),
+                    QRCode = table.Column<string>(type: "TEXT", nullable: true),
                     UsedAt = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -262,23 +263,23 @@ namespace EatAndWatch.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Action" },
-                    { 2, "Adventure" },
-                    { 3, "Animation" },
-                    { 4, "Comedy" },
-                    { 5, "Crime" },
-                    { 6, "Documentary" },
-                    { 7, "Drama" },
-                    { 8, "Family" },
+                    { 1, "Akció" },
+                    { 2, "Kaland" },
+                    { 3, "Animáció" },
+                    { 4, "Vígjáték" },
+                    { 5, "Bűnügyi" },
+                    { 6, "Dokumentumfilm" },
+                    { 7, "Dráma" },
+                    { 8, "Családi" },
                     { 9, "Fantasy" },
-                    { 10, "History" },
+                    { 10, "Történelmi" },
                     { 11, "Horror" },
-                    { 12, "Music" },
-                    { 13, "Mystery" },
-                    { 14, "Romance" },
-                    { 15, "Science Fiction" },
+                    { 12, "Zenei" },
+                    { 13, "Misztikus" },
+                    { 14, "Romantikus" },
+                    { 15, "Sci-Fi" },
                     { 16, "Thriller" },
-                    { 17, "War" },
+                    { 17, "Háborús" },
                     { 18, "Western" }
                 });
 

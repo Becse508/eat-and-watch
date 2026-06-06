@@ -35,42 +35,42 @@ namespace EatAndWatch.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Action"
+                            Name = "Akció"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Adventure"
+                            Name = "Kaland"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Animation"
+                            Name = "Animáció"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Comedy"
+                            Name = "Vígjáték"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Crime"
+                            Name = "Bűnügyi"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Documentary"
+                            Name = "Dokumentumfilm"
                         },
                         new
                         {
                             Id = 7,
-                            Name = "Drama"
+                            Name = "Dráma"
                         },
                         new
                         {
                             Id = 8,
-                            Name = "Family"
+                            Name = "Családi"
                         },
                         new
                         {
@@ -80,7 +80,7 @@ namespace EatAndWatch.Migrations
                         new
                         {
                             Id = 10,
-                            Name = "History"
+                            Name = "Történelmi"
                         },
                         new
                         {
@@ -90,22 +90,22 @@ namespace EatAndWatch.Migrations
                         new
                         {
                             Id = 12,
-                            Name = "Music"
+                            Name = "Zenei"
                         },
                         new
                         {
                             Id = 13,
-                            Name = "Mystery"
+                            Name = "Misztikus"
                         },
                         new
                         {
                             Id = 14,
-                            Name = "Romance"
+                            Name = "Romantikus"
                         },
                         new
                         {
                             Id = 15,
-                            Name = "Science Fiction"
+                            Name = "Sci-Fi"
                         },
                         new
                         {
@@ -115,7 +115,7 @@ namespace EatAndWatch.Migrations
                         new
                         {
                             Id = 17,
-                            Name = "War"
+                            Name = "Háborús"
                         },
                         new
                         {
@@ -150,6 +150,9 @@ namespace EatAndWatch.Migrations
 
                     b.Property<int>("Rating")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("ReleaseDate")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

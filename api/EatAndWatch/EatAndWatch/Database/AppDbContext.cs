@@ -50,25 +50,26 @@ namespace EatAndWatch.Database
             modelBuilder.Entity<Ticket>().HasIndex(t => t.QRCode).IsUnique();
 
             modelBuilder.Entity<Genre>().HasData(
-                new Genre { Id = 1, Name = "Action" },
-                new Genre { Id = 2, Name = "Adventure" },
-                new Genre { Id = 3, Name = "Animation" },
-                new Genre { Id = 4, Name = "Comedy" },
-                new Genre { Id = 5, Name = "Crime" },
-                new Genre { Id = 6, Name = "Documentary" },
-                new Genre { Id = 7, Name = "Drama" },
-                new Genre { Id = 8, Name = "Family" },
+                new Genre { Id = 1, Name = "Akció" },
+                new Genre { Id = 2, Name = "Kaland" },
+                new Genre { Id = 3, Name = "Animáció" },
+                new Genre { Id = 4, Name = "Vígjáték" },
+                new Genre { Id = 5, Name = "Bűnügyi" },
+                new Genre { Id = 6, Name = "Dokumentumfilm" },
+                new Genre { Id = 7, Name = "Dráma" },
+                new Genre { Id = 8, Name = "Családi" },
                 new Genre { Id = 9, Name = "Fantasy" },
-                new Genre { Id = 10, Name = "History" },
+                new Genre { Id = 10, Name = "Történelmi" },
                 new Genre { Id = 11, Name = "Horror" },
-                new Genre { Id = 12, Name = "Music" },
-                new Genre { Id = 13, Name = "Mystery" },
-                new Genre { Id = 14, Name = "Romance" },
-                new Genre { Id = 15, Name = "Science Fiction" },
+                new Genre { Id = 12, Name = "Zenei" },
+                new Genre { Id = 13, Name = "Misztikus" },
+                new Genre { Id = 14, Name = "Romantikus" },
+                new Genre { Id = 15, Name = "Sci-Fi" },
                 new Genre { Id = 16, Name = "Thriller" },
-                new Genre { Id = 17, Name = "War" },
+                new Genre { Id = 17, Name = "Háborús" },
                 new Genre { Id = 18, Name = "Western" }
             );
+           
 
             modelBuilder.Entity<Movie>()
                         .HasMany(m => m.Genres)

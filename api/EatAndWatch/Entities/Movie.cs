@@ -18,5 +18,6 @@ namespace Entities
         public TimeOnly Length { get; set; }
         public string Image { get; set; }
         public ICollection<MovieScreening> Screenings { get; set; } = [];
+        public DateOnly ReleaseDate { get; set; }
     }
 }
