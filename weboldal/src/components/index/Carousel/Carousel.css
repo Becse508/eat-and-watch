@@ -3,8 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 60px;
-  background: #111;
-  color: #fff;
+  color: var(--text-primary);
   height: 100vh;
   box-sizing: border-box;
 }
@@ -40,12 +39,12 @@
   font-size: 48px;
   background: none;
   border: none;
-  color: #777;
+  color: var(--text-muted);
   cursor: pointer;
   transition: 0.2s;
 }
 
 .movie__nav:hover {
-  color: #fff;
+  color: var(--text-primary);
   transform: scale(1.2);
 }
