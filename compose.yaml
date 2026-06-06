@@ -1,12 +1,12 @@
 services:
   api:
-    build: ./api
+    build: ./api/EatAndWatch
     ports:
-      - "5130:5130"
+      - "5130:5144"
     environment:
-      - ASPNETCORE_URLS=http://+:5130
+      - ASPNETCORE_URLS=http://+:5144
     volumes:
-      - ./api/MegDanelzAPI/data.db:/app/data.db
+      - ./api/EatAndWatch/EatAndWatch/data.db:/app/data.db
 
   web:
     build: ./weboldal

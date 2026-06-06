@@ -20,5 +20,6 @@ export async function postMovie(movie: IMovie) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(movie)
-    })
+    });
+    return await rsp.json();
 }
