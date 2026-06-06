@@ -13,4 +13,8 @@ export default interface IMovie {
     image: string;
     screenings: IScreening[];
     releaseDate: Date;
+    originalTitle: string;
+    director: string;
+    mainCharacters: string[];
+    ageRestriction: number;
 }

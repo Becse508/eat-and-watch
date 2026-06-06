@@ -1,5 +1,3 @@
-import type IMovie from "../interfaces/IMovie";
-
 export async function getMovies() {
     let rsp = await fetch("/api/movies", {
         method: "GET",
@@ -13,7 +11,7 @@ export async function getMovies() {
     }
     return await rsp.json();
 }
-export async function postMovie(movie: IMovie) {
+export async function postMovie(movie: object) {
     let rsp = await fetch("/api/movies", {
         method: "POST",
         headers: {
