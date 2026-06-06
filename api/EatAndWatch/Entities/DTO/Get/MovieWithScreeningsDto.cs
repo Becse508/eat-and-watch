@@ -1,14 +1,7 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Entities
+﻿namespace Entities.DTO.Get
 {
-    public class Movie
+    public class MovieWithScreeningsDto
     {
-        [JsonIgnore]
-        public DateTime? DeleteTime { get; set; }
-        [JsonIgnore]
-        public bool IsDeleted => DeleteTime.HasValue;
-
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,6 +10,7 @@ namespace Entities
         public ICollection<Tag> Tags { get; set; } = [];
         public TimeOnly Length { get; set; }
         public string Image { get; set; }
-        public ICollection<MovieScreening> Screenings { get; set; } = [];
+
+        public ICollection<ScreeningNoMovieDto> Screenings { get; set; } = [];
     }
 }

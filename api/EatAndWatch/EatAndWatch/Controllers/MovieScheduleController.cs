@@ -1,6 +1,7 @@
 ﻿using EatAndWatch.Database;
 using Entities;
 using Entities.DTO;
+using Entities.DTO.Get;
 using Entities.DTO.Patch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,24 +22,65 @@ namespace EatAndWatch.Controllers
         }
 
         [HttpGet]
-        public async Task<List<MovieScreening>> GetAll()
+        public async Task<List<ScreeningWithMovieDto>> GetAll()
         {
-            return await _db.ScreeningsWithIncludes.ToListAsync();
+            return await _db.Screenings
+                .Include(s => s.Movie)
+                .Select(s => new ScreeningWithMovieDto
+                {
+                    Id = s.Id,
+                    Time = s.Time,
+                    Price = s.Price,
+
+                    Movie = new MovieNoScreeningsDto
+                    {
+                        Id = s.Movie.Id,
+                        Name = s.Movie.Name,
+                        Description = s.Movie.Description,
+                        Rating = s.Movie.Rating,
+                        Genres = s.Movie.Genres,
+                        Tags = s.Movie.Tags,
+                        Length = s.Movie.Length,
+                        Image = s.Movie.Image
+                    }
+                })
+                .ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<MovieScreening>> Get(int id)
+        public async Task<ActionResult<ScreeningWithMovieDto>> Get(int id)
         {
-            var screening = await _db.ScreeningsWithIncludes.FirstOrDefaultAsync(o => o.Id == id);
-            if (screening == null)
+            var s = await _db.Screenings
+                .Include(x => x.Movie)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (s == null)
                 return NotFound();
-            return screening;
+
+            return new ScreeningWithMovieDto
+            {
+                Id = s.Id,
+                Time = s.Time,
+                Price = s.Price,
+
+                Movie = new MovieNoScreeningsDto
+                {
+                    Id = s.Movie.Id,
+                    Name = s.Movie.Name,
+                    Description = s.Movie.Description,
+                    Rating = s.Movie.Rating,
+                    Genres = s.Movie.Genres,
+                    Tags = s.Movie.Tags,
+                    Length = s.Movie.Length,
+                    Image = s.Movie.Image
+                }
+            };
         }
 
         [HttpPost]
         public async Task<ActionResult<int>> Post([FromBody] MovieScreeningDto screeningDto)
         {
-            if (!_db.Movies.Any(x => x.Id == screeningDto.MovieId))
+            if (!await _db.Movies.AnyAsync(x => x.Id == screeningDto.MovieId))
                 return NotFound("Movie not found!");
 
             MovieScreening screening = new()

@@ -1,6 +1,7 @@
 ﻿using EatAndWatch.Database;
 using Entities;
 using Entities.DTO;
+using Entities.DTO.Get;
 using Entities.DTO.Patch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,18 +22,59 @@ namespace EatAndWatch.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Movie>> GetAll()
+        public async Task<List<MovieWithScreeningsDto>> GetAll()
         {
-            return await _db.MoviesWithIncludes.ToListAsync();
+            var movies = await _db.MoviesWithIncludes.ToListAsync();
+
+            return movies.Select(m => new MovieWithScreeningsDto
+            {
+                Id = m.Id,
+                Name = m.Name,
+                Description = m.Description,
+                Rating = m.Rating,
+                Genres = m.Genres,
+                Tags = m.Tags,
+                Length = m.Length,
+                Image = m.Image,
+
+                Screenings = m.Screenings.Select(s => new ScreeningNoMovieDto
+                {
+                    Id = s.Id,
+                    Time = s.Time,
+                    Price = s.Price
+                }).ToList()
+            }).ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> Get(int id)
+        public async Task<ActionResult<MovieWithScreeningsDto>> Get(int id)
         {
-            var movie = await _db.MoviesWithIncludes.FirstOrDefaultAsync(o => o.Id == id);
-            if (movie == null)
+            var m = await _db.MoviesWithIncludes
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (m == null)
                 return NotFound();
-            return movie;
+
+            var dto = new MovieWithScreeningsDto
+            {
+                Id = m.Id,
+                Name = m.Name,
+                Description = m.Description,
+                Rating = m.Rating,
+                Genres = m.Genres,
+                Tags = m.Tags,
+                Length = m.Length,
+                Image = m.Image,
+
+                Screenings = m.Screenings.Select(s => new ScreeningNoMovieDto
+                {
+                    Id = s.Id,
+                    Time = s.Time,
+                    Price = s.Price
+                }).ToList()
+            };
+
+            return dto;
         }
 
         [HttpPost]

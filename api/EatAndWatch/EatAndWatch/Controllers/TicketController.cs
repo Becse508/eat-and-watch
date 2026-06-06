@@ -1,7 +1,6 @@
 ﻿using EatAndWatch.Database;
 using Entities;
 using Entities.DTO;
-using Entities.DTO.Patch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +23,9 @@ namespace EatAndWatch.Controllers
         {
             if (ticketDto.Amount < 1)
                 return BadRequest("You cannot buy less than 1 tickets");
+            if (ticketDto.Amount > 40)
+                return BadRequest("You cannot buy more than 40 tickets at once");
+
 
             var screening = await _db.Screenings.FirstOrDefaultAsync(x => x.Id == ticketDto.ScreeningId);
             if (screening == null)
