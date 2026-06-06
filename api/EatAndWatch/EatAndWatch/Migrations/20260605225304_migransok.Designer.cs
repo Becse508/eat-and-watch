@@ -3,6 +3,7 @@ using System;
 using EatAndWatch.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EatAndWatch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260605225304_migransok")]
+    partial class migransok
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.8");
@@ -23,11 +26,16 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Genres");
 
@@ -281,11 +289,16 @@ namespace EatAndWatch.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
 
                     b.ToTable("Tags");
                 });
@@ -335,34 +348,11 @@ namespace EatAndWatch.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("GenreMovie", b =>
+            modelBuilder.Entity("Entities.Genre", b =>
                 {
-                    b.Property<int>("GenresId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MovieId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("GenresId", "MovieId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("MovieGenres", (string)null);
-                });
-
-            modelBuilder.Entity("MovieTag", b =>
-                {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TagsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("MovieId", "TagsId");
-
-                    b.HasIndex("TagsId");
-
-                    b.ToTable("MovieTags", (string)null);
+                    b.HasOne("Entities.Movie", null)
+                        .WithMany("Genres")
+                        .HasForeignKey("MovieId");
                 });
 
             modelBuilder.Entity("Entities.MovieScreening", b =>
@@ -415,6 +405,13 @@ namespace EatAndWatch.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Entities.Tag", b =>
+                {
+                    b.HasOne("Entities.Movie", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("MovieId");
+                });
+
             modelBuilder.Entity("Entities.Ticket", b =>
                 {
                     b.HasOne("Entities.MovieScreening", "Screening")
@@ -433,39 +430,13 @@ namespace EatAndWatch.Migrations
                     b.Navigation("Transaction");
                 });
 
-            modelBuilder.Entity("GenreMovie", b =>
-                {
-                    b.HasOne("Entities.Genre", null)
-                        .WithMany()
-                        .HasForeignKey("GenresId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("MovieTag", b =>
-                {
-                    b.HasOne("Entities.Movie", null)
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Entities.Movie", b =>
                 {
+                    b.Navigation("Genres");
+
                     b.Navigation("Screenings");
+
+                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("Entities.MovieScreening", b =>

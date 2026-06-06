@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EatAndWatch")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b3aeec4f33b3f6642d0a565bb36f7e35314053a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd69984f53877ac007bd28eb0148e89ec176de7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("EatAndWatch")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EatAndWatch")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
