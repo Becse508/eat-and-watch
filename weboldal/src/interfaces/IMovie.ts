@@ -12,4 +12,5 @@ export default interface IMovie {
     length: Date;
     image: string;
     screenings: IScreening[];
+    releaseDate: Date;
 }

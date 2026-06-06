@@ -5,5 +5,18 @@ import { getMovies } from "./api/movies.ts";
 const carousel = document.querySelector(
   "components-moviecarousel"
 ) as MovieCarousel;
-
+carousel.movies = [
+    {
+        id: 0,
+        image: "https://media.tenor.com/6bLqzMcCDzEAAAAM/marmalady-loading-cat.gif",
+        name: "",
+        description: "",
+        rating: 0,
+        genres: [],
+        tags: [],
+        screenings: [],
+        length: new Date(0),
+        releaseDate: new Date(0)
+    }
+]
 carousel.movies = await getMovies();

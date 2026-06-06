@@ -6,7 +6,8 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:5144
     volumes:
-      - ./api/EatAndWatch/EatAndWatch/data.db:/app/data.db
+      - ./api/EatAndWatch/EatAndWatch/data:/app/data
+
 
   web:
     build: ./weboldal
