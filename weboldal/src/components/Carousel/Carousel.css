@@ -26,14 +26,83 @@
 .movie__right {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
+  position: relative;
+  width: 50%;
+}
+
+.movie__carousel-container {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .movie__poster {
+  position: absolute;
   width: 320px;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   background: var(--notification-bg);
+  /* Ez végzi el a fizikai animációt és csúszást a pozíciók között */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.6s ease, 
+              filter 0.6s ease;
+  object-fit: cover;
+  aspect-ratio: 2/3;
+}
+
+/* Fókuszban lévő elem */
+.movie__poster--curr {
+  z-index: 3;
+  transform: scale(1) translateX(0);
+  opacity: 1;
+  filter: brightness(1);
+  cursor: pointer;
+}
+
+/* Balra lévő (előző) elem */
+.movie__poster--prev {
+  z-index: 2;
+  transform: scale(0.8) translateX(-70%);
+  opacity: 0.5;
+  filter: brightness(0.3);
+  cursor: pointer;
+}
+
+/* Jobbra lévő (következő) elem */
+.movie__poster--next {
+  z-index: 2;
+  transform: scale(0.8) translateX(70%);
+  opacity: 0.5;
+  filter: brightness(0.3);
+  cursor: pointer;
+}
+
+/* A láthatatlan elemek pozíciói, amik be fognak csúszni */
+.movie__poster--hidden-left {
+  z-index: 1;
+  transform: scale(0.6) translateX(-120%);
+  opacity: 0;
+  filter: brightness(0);
+  pointer-events: none;
+}
+
+.movie__poster--hidden-right {
+  z-index: 1;
+  transform: scale(0.6) translateX(120%);
+  opacity: 0;
+  filter: brightness(0);
+  pointer-events: none;
+}
+
+.movie__poster--prev:hover,
+.movie__poster--next:hover {
+  opacity: 0.8;
+  filter: brightness(0.6);
 }
 
 .movie__nav {
@@ -43,6 +112,7 @@
   color: var(--text-muted);
   cursor: pointer;
   transition: 0.2s;
+  z-index: 4;
 }
 
 .movie__nav:hover {
@@ -56,6 +126,7 @@
     text-align: center;
     gap: 32px;
     margin-bottom: 256px;
+    height: auto;
   }
   
   .movie__left {
@@ -67,11 +138,31 @@
   }
   
   .movie__right {
-    gap: 16px;
+    width: 100%;
   }
   
-  .movie__poster {
+  .movie__carousel-container {
     width: 100%;
     max-width: 400px;
+    height: 400px;
+  }
+
+  .movie__poster {
+     width: 260px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .movie__poster--prev {
+    transform: scale(0.8) translateX(-45%);
+  }
+  .movie__poster--next {
+    transform: scale(0.8) translateX(45%);
+  }
+  .movie__poster {
+    width: 200px;
+  }
+  .movie__carousel-container {
+    height: 300px;
   }
 }
