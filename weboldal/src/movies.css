@@ -1,0 +1,115 @@
+.movies-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 10%;
+  min-height: 70vh;
+  gap: 40px;
+}
+
+.movies-header {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.movie-page-title {
+  font-size: clamp(48px, 6vw, 72px);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: var(--text-primary);
+  gap: 30px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  background-color: var(--notification-bg);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: var(--text-primary);
+  font-size: 20px;
+  outline: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  background-color: var(--ingredient-bg);
+  box-shadow: 0 0 0 2px var(--text-muted);
+}
+
+.length-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.length-input {
+  width: 80px;
+  background-color: var(--notification-bg);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-primary);
+  font-size: 18px;
+  text-align: center;
+  outline: none;
+  transition: background-color 0.2s;
+}
+
+.length-input:focus {
+  background-color: var(--ingredient-bg);
+}
+
+.length-input::-webkit-inner-spin-button,
+.length-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.length-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.movies-content {
+  width: 100%;
+  max-width: 1400px;
+  min-height: 70vh;
+}
+
+@media screen and (max-width: 768px) {
+  .movies-main {
+    padding: 20px 5%;
+  }
+
+  .filters-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+  
+  .length-filter {
+    flex-wrap: wrap;
+  }
+}

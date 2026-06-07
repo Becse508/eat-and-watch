@@ -22,6 +22,7 @@ export default defineConfig({
         cart: "cart.html",
         legal: "legal.html",
         details: "details.html",
+        movies: "movies.html",
       },
     },
   },
