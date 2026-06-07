@@ -23,5 +23,9 @@ carousel.movies = [
         mainCharacters: []
     }
 ]
-carousel.movies = await getMovies();
+
+const movies = await getMovies();
+carousel.movies = movies;
+
+
 
