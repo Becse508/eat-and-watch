@@ -43,10 +43,8 @@ namespace EatAndWatch.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            var now = DateTime.UtcNow;
-
             modelBuilder.Entity<Movie>().HasQueryFilter(m => !m.DeleteTime.HasValue);
-            modelBuilder.Entity<MovieScreening>().HasQueryFilter(m => !m.CancelledTime.HasValue && m.Time >= now);
+            modelBuilder.Entity<MovieScreening>().HasQueryFilter(m => !m.CancelledTime.HasValue && DateTime.UtcNow <= m.Time.AddHours(5)); // valid for 5 hours after start
             modelBuilder.Entity<Ticket>().HasIndex(t => t.QRCode).IsUnique();
 
             modelBuilder.Entity<Genre>().HasData(

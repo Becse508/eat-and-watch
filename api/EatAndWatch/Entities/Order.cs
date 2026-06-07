@@ -12,5 +12,7 @@ namespace Entities
 
         public List<OrderProduct> Products { get; set; } = [];
         public bool CouponApplied { get; set; }
+        public int Room { get; set; }
+        public int Table { get; set; }
     }
 }

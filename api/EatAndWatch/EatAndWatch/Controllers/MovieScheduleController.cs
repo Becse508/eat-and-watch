@@ -31,6 +31,8 @@ namespace EatAndWatch.Controllers
                     Id = s.Id,
                     Time = s.Time,
                     Price = s.Price,
+                    Room = s.Room,
+                    TableReservation = s.TableReservation,
 
                     Movie = new MovieNoScreeningsDto
                     {
@@ -41,7 +43,12 @@ namespace EatAndWatch.Controllers
                         Genres = s.Movie.Genres,
                         Tags = s.Movie.Tags,
                         Length = s.Movie.Length,
-                        Image = s.Movie.Image
+                        Image = s.Movie.Image,
+                        AgeRestriction = s.Movie.AgeRestriction,
+                        Director = s.Movie.Director,
+                        MainCharacters = s.Movie.MainCharacters,
+                        OriginalTitle = s.Movie.OriginalTitle,
+                        ReleaseDate = s.Movie.ReleaseDate
                     }
                 })
                 .ToListAsync();
@@ -62,6 +69,8 @@ namespace EatAndWatch.Controllers
                 Id = s.Id,
                 Time = s.Time,
                 Price = s.Price,
+                Room = s.Room,
+                TableReservation = s.TableReservation,
 
                 Movie = new MovieNoScreeningsDto
                 {
@@ -72,7 +81,12 @@ namespace EatAndWatch.Controllers
                     Genres = s.Movie.Genres,
                     Tags = s.Movie.Tags,
                     Length = s.Movie.Length,
-                    Image = s.Movie.Image
+                    Image = s.Movie.Image,
+                    AgeRestriction = s.Movie.AgeRestriction,
+                    Director = s.Movie.Director,
+                    MainCharacters = s.Movie.MainCharacters,
+                    OriginalTitle = s.Movie.OriginalTitle,
+                    ReleaseDate = s.Movie.ReleaseDate
                 }
             };
         }
@@ -80,13 +94,17 @@ namespace EatAndWatch.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Post([FromBody] MovieScreeningDto screeningDto)
         {
+            if (screeningDto.Room < 1 || screeningDto.Room > 3)
+                return BadRequest("Invalid room number");
             if (!await _db.Movies.AnyAsync(x => x.Id == screeningDto.MovieId))
                 return NotFound("Movie not found!");
 
             MovieScreening screening = new()
             {
                 MovieId = screeningDto.MovieId,
-                Time = screeningDto.Time
+                Time = screeningDto.Time,
+                Price = screeningDto.Price,
+                Room = screeningDto.Room
             };
 
             await _db.Screenings.AddAsync(screening);

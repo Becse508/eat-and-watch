@@ -21,37 +21,44 @@ namespace EatAndWatch.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Post([FromBody] TicketDto ticketDto)
         {
-            if (ticketDto.Amount < 1)
+            var tables = ticketDto.Tables.ToArray();
+            if (tables.Length < 1)
                 return BadRequest("You cannot buy less than 1 tickets");
-            if (ticketDto.Amount > 40)
-                return BadRequest("You cannot buy more than 40 tickets at once");
+            if (tables.Length > 22)
+                return BadRequest("You cannot buy more than 22 tickets at once");
+            if (tables.Any(x => x < 1 || x > 22))
+                return BadRequest("Invalid table number");
 
 
             var screening = await _db.Screenings.FirstOrDefaultAsync(x => x.Id == ticketDto.ScreeningId);
             if (screening == null)
                 return NotFound("Scheduled screening not found!");
+            if (screening.TableReservation.Any(x => tables.Contains(x)))
+                return BadRequest("Trying to reserve an already reserved table");
 
             Transaction transaction = new()
             {
-                Amount = screening.Price * ticketDto.Amount,
+                Amount = screening.Price * tables.Length,
                 Cashier = "",
                 Tip = 0
             };
 
-            Ticket[] tickets = new Ticket[ticketDto.Amount];
-            for (int i = 0; i < ticketDto.Amount; i++)
+            Ticket[] tickets = new Ticket[tables.Length];
+            for (int i = 0; i < tables.Length; i++)
             {
                 tickets[i] = new()
                 {
                     ScreeningId = ticketDto.ScreeningId,
-                    Transaction = transaction
+                    Transaction = transaction,
+                    Table = tables[i]
                 };
+                screening.TableReservation.Add(tables[i]);
             }
 
             await _db.Tickets.AddRangeAsync(tickets);
             await _db.SaveChangesAsync();
 
-            for (int i = 0; i < ticketDto.Amount; i++)
+            for (int i = 0; i < tables.Length; i++)
             {
                 tickets[i].QRCode = $"{tickets[i].Id}-{TicketTools.CreateHmac(tickets[i].Id.ToString())}";
             }

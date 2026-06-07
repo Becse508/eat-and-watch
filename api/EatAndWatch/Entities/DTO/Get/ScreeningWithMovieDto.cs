@@ -7,5 +7,7 @@
         public int Price { get; set; }
 
         public MovieNoScreeningsDto Movie { get; set; }
+        public int Room { get; set; }
+        public ICollection<int> TableReservation { get; set; }
     }
 }
