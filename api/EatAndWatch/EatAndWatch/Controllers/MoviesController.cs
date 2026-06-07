@@ -46,7 +46,9 @@ namespace EatAndWatch.Controllers
                 {
                     Id = s.Id,
                     Time = s.Time,
-                    Price = s.Price
+                    Price = s.Price,
+                    Room = s.Room,
+                    TableReservation = s.TableReservation
                 }).ToList()
             }).ToList();
         }
@@ -80,7 +82,9 @@ namespace EatAndWatch.Controllers
                 {
                     Id = s.Id,
                     Time = s.Time,
-                    Price = s.Price
+                    Price = s.Price,
+                    Room = s.Room,
+                    TableReservation = s.TableReservation
                 }).ToList()
             };
 
