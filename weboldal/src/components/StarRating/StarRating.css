@@ -1,0 +1,26 @@
+.star-container {
+  display: inline-flex;
+  font-size: 38px;
+  gap: 4px;
+  user-select: none;
+}
+.star {
+  color: var(--text-special);
+  position: relative;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+}
+.star.full {
+  color: var(--accent-color);
+}
+.star.half {
+  color: var(--text-special);
+}
+.star.half::after {
+  content: '★';
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+}

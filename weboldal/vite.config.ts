@@ -20,6 +20,8 @@ export default defineConfig({
         done: "done.html",
         orders: "orders.html",
         cart: "cart.html",
+        legal: "legal.html",
+        details: "details.html",
       },
     },
   },

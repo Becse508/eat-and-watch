@@ -23,6 +23,7 @@
   --footer-text: #666;
   --footer-link: #ff0046;
   --footer-separator: #ccc;
+  --highlight: #1a1a1a;
 
   --theme-mode: dark;
 }
@@ -52,6 +53,7 @@
   --footer-text: #666;
   --footer-link: #ff0046;
   --footer-separator: #999;
+  --highlight: #e2e2e2;
 
   --theme-mode: light;
 }
@@ -161,7 +163,7 @@ main {
   margin-bottom: 48px;
   align-self: flex-start;
   color: var(--text-primary);
-  background-color: #1a1a1a;
+  background-color: var(--highlight);
   padding: 8px 16px;
 }
 

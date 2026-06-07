@@ -14,7 +14,7 @@ export default class MovieCarousel extends HTMLElement {
   }
 
   set movies(value: IMovie[]) {
-    this._movies = value ?? [];
+    this._movies = value.slice(0, 3) ?? [];
     this.currentIndex = 0;
     this.renderShellIfReady();
   }
@@ -27,7 +27,7 @@ export default class MovieCarousel extends HTMLElement {
     if (!this.isConnected) return;
     if (!this._movies.length) return;
 
-    // Only render once
+    // only render once
     if (this.titleEl) {
       this.updateView();
       return;
@@ -42,7 +42,7 @@ export default class MovieCarousel extends HTMLElement {
 
         <div class="movie__right">
           <button class="movie__nav movie__nav--prev">‹</button>
-          <img class="movie__poster" />
+          <img class="movie__poster" style="cursor: pointer;" onclick="window.location.href='/details?id=${this._movies[this.currentIndex].id}'" />
           <button class="movie__nav movie__nav--next">›</button>
         </div>
       </section>
@@ -93,5 +93,3 @@ export default class MovieCarousel extends HTMLElement {
     this.updateView();
   }
 }
-
-customElements.define("components-moviecarousel", MovieCarousel);

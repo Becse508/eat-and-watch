@@ -23,9 +23,9 @@ export default class MovieGrid extends HTMLElement {
     this.innerHTML = `
       <div class="movie-grid">
         ${this._movies.map(m => `
-          <div class="movie-grid-item inter" data-id="${m.id}">
+          <div class="movie-grid-item inter" data-id="${m.id}" onclick="window.location.href='/details?id=${m.id}'">
             <img src="${m.image || 'https://via.placeholder.com/200x300'}" alt="${m.name}" loading="lazy" />
-            <p class="bold">${m.name}</p>
+            <p class="bold inter">${m.name}</p>
           </div>
         `).join('')}
       </div>

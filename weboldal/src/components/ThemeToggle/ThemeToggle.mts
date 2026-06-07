@@ -49,11 +49,7 @@ export default class ThemeToggle extends HTMLElement {
   }
 
   setTheme(theme: string) {
-    if (theme === "light") {
-      document.documentElement.classList.add("light-mode");
-    } else {
-      document.documentElement.classList.remove("light-mode");
-    }
+    document.documentElement.classList.toggle("light-mode", theme === "light");
     localStorage.setItem("theme", theme);
   }
 }

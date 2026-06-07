@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eat&Watch | Film Részletek</title>
+    <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <components-navbar>
+      <components-title class="brand montserrat black" title-role="nav">Eat&Watch</components-title>
+      <div class="nav-right">
+        <components-theme-toggle></components-theme-toggle>
+      </div>
+    </components-navbar>
+    
+    <main class="details-main" id="details-container">
+      <h2 class="inter">Adatok betöltése...</h2>
+    </main>
+    
+    <components-footer></components-footer>
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/details.ts"></script>
+  </body>
+</html>
