@@ -1,20 +1,22 @@
 import type IMovie from "../../interfaces/IMovie";
 import "./Carousel.css";
 
+// az animaciokhoz hasznalt stackoverflow threadek:
+// https://stackoverflow.com/questions/39673540/an-infinite-carousel-with-vanilla-javascript
+// https://stackoverflow.com/questions/58243505/how-to-make-an-infinite-js-carousel-infinity-problem
+
 export default class MovieCarousel extends HTMLElement {
   private _movies: IMovie[] = [];
   private currentIndex = 0;
-
-  private titleEl: HTMLHeadingElement | null = null;
-  private descEl: HTMLParagraphElement | null = null;
-  private imgEl: HTMLImageElement | null = null;
+  private posters: HTMLImageElement[] = [];
+  private limit = 5;
 
   connectedCallback() {
     this.renderShellIfReady();
   }
 
   set movies(value: IMovie[]) {
-    this._movies = value.slice(0, 3) ?? [];
+    this._movies = (this.limit == 0 ? value : value.slice(0, this.limit)) || [];
     this.currentIndex = 0;
     this.renderShellIfReady();
   }
@@ -27,69 +29,100 @@ export default class MovieCarousel extends HTMLElement {
     if (!this.isConnected) return;
     if (!this._movies.length) return;
 
-    // only render once
-    if (this.titleEl) {
-      this.updateView();
-      return;
+    if (!this.querySelector(".movie")) {
+      this.innerHTML = `
+        <section class="movie">
+          <div class="movie__left">
+            <h1 class="movie__title montserrat black">Válogass filmjeink közül</h1>
+            <p class="movie__desc montserrat regular">Egy kis nasi kíséretében</p>
+          </div>
+
+          <div class="movie__right">
+            <button class="movie__nav movie__nav--prev">‹</button>
+            <div class="movie__carousel-container">
+              </div>
+            <button class="movie__nav movie__nav--next">›</button>
+          </div>
+        </section>
+      `;
+
+      const prevBtn = this.querySelector(".movie__nav--prev");
+      const nextBtn = this.querySelector(".movie__nav--next");
+
+      prevBtn?.addEventListener("click", () => this.prev());
+      nextBtn?.addEventListener("click", () => this.next());
     }
 
-    this.innerHTML = `
-      <section class="movie">
-        <div class="movie__left">
-          <h1 class="movie__title montserrat black">Válogass filmjeink közül</h1>
-          <p class="movie__desc montserrat regular">Egy kis nasi kíséretében</p>
-        </div>
+    const container = this.querySelector(".movie__carousel-container");
+    if (container) {
+      container.innerHTML = ""; 
+      this.posters = [];
 
-        <div class="movie__right">
-          <button class="movie__nav movie__nav--prev">‹</button>
-          <img class="movie__poster" style="cursor: pointer;" onclick="window.location.href='/details?id=${this._movies[this.currentIndex].id}'" />
-          <button class="movie__nav movie__nav--next">›</button>
-        </div>
-      </section>
-    `;
+      this._movies.forEach((movie, index) => {
+        const img = document.createElement("img");
+        img.src = movie.image;
+        img.alt = movie.name;
+        img.className = "movie__poster";
+        
+        img.addEventListener("click", () => {
+          if (this.currentIndex === index) {
+            window.location.href = `/details?id=${movie.id}`;
+          } else {
+            this.currentIndex = index;
+            this.updateView();
+          }
+        });
 
-    this.titleEl = this.querySelector(".movie__title");
-    this.descEl = this.querySelector(".movie__desc");
-    this.imgEl = this.querySelector(".movie__poster");
-
-    const prev = this.querySelector(".movie__nav--prev");
-    const next = this.querySelector(".movie__nav--next");
-
-    prev?.addEventListener("click", () => this.prev());
-    next?.addEventListener("click", () => this.next());
+        container.appendChild(img);
+        this.posters.push(img);
+      });
+    }
 
     this.updateView();
   }
 
   private updateView() {
-    if (!this._movies.length) return;
+    if (!this._movies.length || !this.posters.length) return;
 
-    const movie = this._movies[this.currentIndex];
+    const len = this._movies.length;
 
-    if (!this.titleEl || !this.descEl || !this.imgEl) return;
+    this.posters.forEach((poster, i) => {
+      let offset = (i - this.currentIndex) % len;
+      
+      if (offset > len / 2) offset -= len;
+      if (offset < -len / 2) offset += len;
 
-    // this.titleEl.textContent = movie.name;
-    // this.descEl.textContent = movie.description;
-    this.imgEl.src = movie.image;
-    this.imgEl.alt = movie.name;
+      poster.classList.remove(
+        "movie__poster--curr",
+        "movie__poster--prev",
+        "movie__poster--next",
+        "movie__poster--hidden-left",
+        "movie__poster--hidden-right"
+      );
+
+      if (offset === 0) {
+        poster.classList.add("movie__poster--curr");
+      } else if (offset === -1) {
+        poster.classList.add("movie__poster--prev");
+      } else if (offset === 1) {
+        poster.classList.add("movie__poster--next");
+      } else if (offset < 0) {
+        poster.classList.add("movie__poster--hidden-left");
+      } else {
+        poster.classList.add("movie__poster--hidden-right");
+      }
+    });
   }
 
   private next() {
     if (!this._movies.length) return;
-
-    this.currentIndex =
-      (this.currentIndex + 1) % this._movies.length;
-
+    this.currentIndex = (this.currentIndex + 1) % this._movies.length;
     this.updateView();
   }
 
   private prev() {
     if (!this._movies.length) return;
-
-    this.currentIndex =
-      (this.currentIndex - 1 + this._movies.length) %
-      this._movies.length;
-
+    this.currentIndex = (this.currentIndex - 1 + this._movies.length) % this._movies.length;
     this.updateView();
   }
 }
