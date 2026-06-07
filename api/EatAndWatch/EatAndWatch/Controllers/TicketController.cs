@@ -24,9 +24,9 @@ namespace EatAndWatch.Controllers
             var tables = ticketDto.Tables.ToArray();
             if (tables.Length < 1)
                 return BadRequest("You cannot buy less than 1 tickets");
-            if (tables.Length > 22)
-                return BadRequest("You cannot buy more than 22 tickets at once");
-            if (tables.Any(x => x < 1 || x > 22))
+            if (tables.Length > 23)
+                return BadRequest("You cannot buy more than 23 tickets at once");
+            if (tables.Any(x => x < 1 || x > 23))
                 return BadRequest("Invalid table number");
 
 

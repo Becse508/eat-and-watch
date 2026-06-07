@@ -5,4 +5,5 @@ export default interface IMovieScreening {
     time: Date;
     price: number;
     movie: IMovie;
+    tableReservation: number[];
 }

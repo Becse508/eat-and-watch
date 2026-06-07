@@ -1,5 +1,5 @@
 import "./ticket.css";
-import JsBarcode from "jsbarcode";
+import QRCode from "qrcode";
 import type IMovie from "./interfaces/IMovie";
 
 const params = new URLSearchParams(window.location.search);
@@ -8,7 +8,7 @@ const code = params.get("code") || "ISMERETLEN";
 
 const nameEl = document.getElementById("t-movie-name")!;
 const lengthEl = document.getElementById("t-movie-length")!;
-const barcodeSvg = document.getElementById("barcode-svg")!;
+const qrCanvas = document.getElementById("qrcode-canvas") as HTMLCanvasElement;
 
 function formatLength(timeStr: string | any) {
   if (!timeStr) return "-";
@@ -23,15 +23,15 @@ function formatLength(timeStr: string | any) {
 }
 
 async function init() {
-  JsBarcode(barcodeSvg, code, {
-    format: "CODE128",
-    width: 3,
-    height: 120,
-    displayValue: true,
-    font: "monospace",
-    fontSize: 28,
-    lineColor: "#000000",
-    margin: 10
+  QRCode.toCanvas(qrCanvas, code, {
+    width: 250,
+    margin: 2,
+    color: {
+      dark: '#000000',
+      light: '#ffffff'
+    }
+  }, function (error) {
+    if (error) console.error("QR kód generálási hiba", error);
   });
 
   if (movieId) {

@@ -46,7 +46,7 @@ namespace EatAndWatch.Controllers
 
             if (orderDto.Room < 1 || orderDto.Room > 3)
                 return BadRequest("Invalid room number");
-            if (orderDto.Table < 1 || orderDto.Table > 22)
+            if (orderDto.Table < 1 || orderDto.Table > 23)
                 return BadRequest("Invalid table number");
             
 
