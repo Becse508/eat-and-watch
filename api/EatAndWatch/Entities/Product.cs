@@ -44,6 +44,6 @@ namespace Entities
 
     public enum ProductType
     {
-        Food, Drink, Sidedish
+        Drink, Food, Sidedish
     }
 }
