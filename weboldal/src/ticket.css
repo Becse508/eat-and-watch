@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.ticket-wrapper {
+  background-color: #1a1a1a;
+  color: #fff;
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.ticket-brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 64px;
+  line-height: 1;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.detail-group {
+  margin-bottom: 30px;
+}
+
+.detail-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0 0 5px 0;
+}
+
+.detail-value {
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.1;
+  color: #e0e0e0;
+}
+
+.ticket-footer {
+  margin-top: 20px;
+}
+
+.disclaimer {
+  font-size: 24px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.barcode-container {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#barcode-svg {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.ticket-code {
+  color: #000;
+  font-size: 28px;
+  font-family: monospace;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* Nyomtatási nézet finomhangolása */
+@media print {
+  body {
+    background-color: #fff;
+    padding: 0;
+  }
+  .ticket-wrapper {
+    background-color: #fff;
+    color: #000;
+    max-width: 100%;
+    padding: 20px;
+  }
+  .detail-value, .disclaimer {
+    color: #000;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eat&Watch | Jegy</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="ticket-wrapper" id="ticket-content">
+        <div class="ticket-header">
+            <h1 class="ticket-brand">JEGY<br>EAT&WATCH</h1>
+        </div>
+
+        <div class="ticket-details">
+            <div class="detail-group">
+                <h2 class="detail-label">Film</h2>
+                <p class="detail-value" id="t-movie-name">Betöltés...</p>
+            </div>
+
+            <div class="detail-group">
+                <h2 class="detail-label">Hossz</h2>
+                <p class="detail-value" id="t-movie-length">-</p>
+            </div>
+        </div>
+
+        <div class="ticket-footer">
+            <p class="disclaimer">A jegyet a helyszínen, a vetítés előtt legalább 24 órával lehet lemondani.</p>
+
+            <div class="barcode-container">
+                <svg id="barcode-svg"></svg>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/src/ticket.ts"></script>
+</body>
+
+</html>

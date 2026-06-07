@@ -15,10 +15,12 @@
   "author": "Maixner Dominik, Kis Becse Gáspár",
   "license": "MIT",
   "dependencies": {
+    "jsbarcode": "^3.12.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.0"
   },
   "devDependencies": {
+    "@types/jsbarcode": "^3.11.4",
     "concurrently": "^8.2.0"
   }
 }

@@ -1,0 +1,105 @@
+.book-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 5%;
+  min-height: 70vh;
+  gap: 40px;
+}
+
+.movie-book-title {
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.screen-indicator {
+  width: 100%;
+  max-width: 800px;
+  background-color: #333;
+  color: #888;
+  text-align: center;
+  padding: 12px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.seats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.seat {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  user-select: none;
+}
+
+.seat:hover:not(.taken) {
+  transform: scale(1.1);
+}
+
+.seat.taken {
+  background-color: #444;
+  color: transparent;
+  cursor: not-allowed;
+}
+
+.seat.selected {
+  background-color: #4CAF50; /* Zöld szín kiválasztáskor */
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.booking-bar {
+  position: fixed;
+  bottom: 40px;
+  right: 5%;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 8px 30px 8px 8px;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.price-display {
+  font-size: 24px;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .seat {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+  .booking-bar {
+    right: 50%;
+    transform: translateX(50%);
+    width: max-content;
+  }
+}

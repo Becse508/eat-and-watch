@@ -21,7 +21,7 @@ async function init() {
   if (!container) return;
 
   if (!movieId) {
-    container.innerHTML = `<h2 class="inter" style="color: var(--text-primary);">Nem található film azonosító. Próbáld a Főoldalról.</h2>`;
+    container.innerHTML = `<h2 class="inter" style="color: var(--text-primary);">Ismeretlen film.</h2>`;
     return;
   }
 
@@ -38,7 +38,7 @@ async function init() {
     ? movie.releaseDate.toString().replace(/-/g, ". ") + "." 
     : "-";
 
-  const percentage = movie.rating > 0 ? Math.round((movie.rating / 5) * 10) : 90;
+  const percentage = (movie.rating * 10).toFixed(0);
 
   container.innerHTML = `
     <div class="movie-details-layout inter">
@@ -68,22 +68,23 @@ async function init() {
         </div>
 
         <div class="rating-section">
-          <components-starrating value="${movie.rating}" max="5"></components-starrating>
+          <components-starrating value="${movie.rating / 2}" max="5"></components-starrating>
           <span class="rating-text inter">A felhasználók ${percentage}%-ának tetszett ez a film.</span>
         </div>
 
         <div class="action-row">
-          <div class="age-restriction-circle montserrat">${movie.ageRestriction}</div>
-          <components-button 
+            <div class="age-restriction-circle montserrat">${movie.ageRestriction}</div>
+            <components-button 
+            url="/book?id=${movie.id}"
             background="var(--accent-color)" 
             color="#000000" 
             radius="24px" 
             font="montserrat"
             weight="bold"
             style="font-size: 24px; padding: 14px 40px;"
-          >
+            >
             Jegyfoglalás
-          </components-button>
+            </components-button>
         </div>
       </div>
 
