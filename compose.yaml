@@ -1,8 +1,10 @@
 services:
   api:
-    build: ./api/EatAndWatch
+    build:
+      context: ./api/EatAndWatch
+      network: host
     ports:
-      - "5144:5144"
+      - "127.0.0.1:5144:5144"
     environment:
       - ASPNETCORE_URLS=http://+:5144
     volumes:
@@ -10,8 +12,10 @@ services:
 
 
   web:
-    build: ./weboldal
+    build:
+      context: ./weboldal
+      network: host
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     depends_on:
       - api

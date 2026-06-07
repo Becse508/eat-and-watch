@@ -8,6 +8,7 @@ const code = params.get("code") || "ISMERETLEN";
 
 const nameEl = document.getElementById("t-movie-name")!;
 const lengthEl = document.getElementById("t-movie-length")!;
+const roomEl = document.getElementById("t-movie-room")!;
 const qrCanvas = document.getElementById("qrcode-canvas") as HTMLCanvasElement;
 
 function formatLength(timeStr: string | any) {
@@ -41,6 +42,7 @@ async function init() {
         const movie: IMovie = await res.json();
         nameEl.textContent = movie.name;
         lengthEl.textContent = formatLength(movie.length);
+        roomEl.textContent = `${movie.screenings[0]?.room || "-"}`;
       }
     } catch (err) {
       console.error("Film betöltési hiba", err);
