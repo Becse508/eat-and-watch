@@ -83,9 +83,6 @@ namespace EatAndWatch.Controllers
             if (ticket.IsUsed)
                 return BadRequest("Already used");
 
-            if (ticket.ScreeningId != ticketInfo.ScreeningId)
-                return BadRequest("Not for this screening");
-
             ticket.UsedAt = DateTime.UtcNow;
             await _db.SaveChangesAsync();
             return Ok();
