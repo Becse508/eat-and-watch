@@ -1,19 +1,17 @@
 import "./Footer.css";
 
 export default class Footer extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   connectedCallback() {
     this.innerHTML = `
       <footer class="footer inter">
         <div class="footer-content">
-          <p class="footer-copyright">&copy; 2026 MegDánelz. Minden jog fenntartva.</p>
-          <div class="footer-links">
-            <a href="/legal#terms-of-service">Felhasználási feltételek</a>
-            <span class="footer-separator">•</span>
+          <div class="footer-left">
+            <h2 class="montserrat brand-text">Eat&Watch</h2>
+            <p class="footer-copyright inter">Kis Becse Gáspár, Maixner Dominik &copy; ${new Date().getFullYear()}</p>
+          </div>
+          <div class="footer-right footer-links inter">
             <a href="/legal#imprint">Impresszum</a>
+            <a href="/legal#terms-of-service">Általános Szerződési Feltételek</a>
           </div>
         </div>
       </footer>

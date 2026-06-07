@@ -7,37 +7,54 @@
     <link href="https://fonts.cdnfonts.com/css/komika-axis" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="shortcut icon" href="https://files.catbox.moe/seu2yv.webp" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <components-navbar>
-      <components-title class="brand montserrat black"
-        >Eat&Watch</components-title
-      >
+      <components-title class="brand montserrat black">Eat&Watch</components-title>
       <div class="nav-right">
         <components-theme-toggle></components-theme-toggle>
-        <components-button weight="black" class="font-regular-24px" url="/order"
-          >Rendelés</components-button
-        >
       </div>
     </components-navbar>
-    <main>
+
+    <main class="home-main">
       <components-moviecarousel></components-moviecarousel>
 
-      <h1>Miért mozizz nálunk?</h1>
+      <div class="scroll-down-icon no-select">🖱️</div>
 
-      <components-showcase
-        image="https://files.catbox.moe/l7rbyf.png"
-        title="Rendeld az ételed egyenesen a székedbe"
-        direction="left">Ebben a moziban nem kell lemaradnod a sztoriról, ha még popcornt szeretnél.</components-showcase>
-      <components-showcase
-        image="https://files.catbox.moe/xjku2q.png"
-        title="Olcsó mozijegyek, akár csoportoknak is"
-        direction="right">Osztálykirándulás esetén csak egy telefonhívásba kerül, és leárazott jegyeket adhatunk mindenkinek.</components-showcase>
+      <section class="home-section">
+        <h1 class="section-title montserrat black">Miért mozizz nálunk?</h1>
+        
+        <components-showcase
+          image="https://files.catbox.moe/l7rbyf.png"
+          card-title="Rendeld az ételed egyenesen a székedbe"
+          direction="right">Ebben a moziban nem kell lemaradnod a sztoriról, ha még popcornt szeretnél.</components-showcase>
+          
+        <components-showcase
+          image="https://files.catbox.moe/xjku2q.png"
+          card-title="Olcsó mozijegyek, akár csoportoknak is"
+          direction="left">Osztálykirándulás esetén csak egy telefonhívásba kerül, és leárazott jegyeket adhatunk mindenkinek.</components-showcase>
+
+        <components-showcase
+          image="https://files.catbox.moe/l7rbyf.png" 
+          card-title="Majd kitaláljuk a harmadik indokot"
+          direction="right">stay tuned :)</components-showcase>
+      </section>
+
+      <section class="home-section full-width-section">
+        <h1 class="section-title montserrat black">Vetítésen</h1>
+        <components-moviegrid id="now-playing-grid"></components-moviegrid>
+        <a href="#" class="all-movies-link inter bold">Összes film</a>
+      </section>
+
+      <section class="home-section full-width-section">
+        <h1 class="section-title montserrat black">Hamarosan</h1>
+        <components-moviegrid id="coming-soon-grid"></components-moviegrid>
+        <a href="#" class="all-movies-link inter bold">Összes film</a>
+      </section>
     </main>
+
     <components-footer></components-footer>
     <script type="module" src="/src/index.ts"></script>
   </body>

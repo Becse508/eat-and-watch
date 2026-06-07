@@ -4,7 +4,7 @@
   align-items: center;
   padding: 60px;
   color: var(--text-primary);
-  height: 100vh;
+  height: 70vh;
   box-sizing: border-box;
 }
 
@@ -48,4 +48,26 @@
 .movie__nav:hover {
   color: var(--text-primary);
   transform: scale(1.2);
+}
+
+@media screen and (max-width: 1200px) {
+  .movie {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+    margin-bottom: 128px;
+  }
+  
+  .movie__left {
+    max-width: 100%;
+  }
+  
+  .movie__right {
+    gap: 16px;
+  }
+  
+  .movie__poster {
+    width: 100%;
+    max-width: 400px;
+  }
 }

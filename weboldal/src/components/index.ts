@@ -8,6 +8,7 @@ import NotificationElem from "./Notification/NotificationElem.mts";
 import NotificationContainer from "./NotificationContainer/NotificationContainer.mts";
 import Footer from "./Footer/Footer.mts";
 import ThemeToggle from "./ThemeToggle/ThemeToggle.mts";
+import MovieGrid from "./MovieGrid/MovieGrid.mts"
 
 const elements = [
   { name: "components-navbar", element: Navbar },
@@ -20,6 +21,7 @@ const elements = [
   { name: "components-notification-container", element: NotificationContainer },
   { name: "components-footer", element: Footer },
   { name: "components-theme-toggle", element: ThemeToggle },
+  { name: "components-moviegrid", element: MovieGrid },
 ];
 
 elements.map(({ name, element }) => customElements.define(name, element));

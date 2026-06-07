@@ -1,4 +1,4 @@
-import type IMovie from "../../../interfaces/IMovie";
+import type IMovie from "../../interfaces/IMovie";
 import "./Carousel.css";
 
 export default class MovieCarousel extends HTMLElement {
@@ -36,8 +36,8 @@ export default class MovieCarousel extends HTMLElement {
     this.innerHTML = `
       <section class="movie">
         <div class="movie__left">
-          <h1 class="movie__title">Válogass filmeink közül</h1>
-          <p class="movie__desc">Egy kis nasi kíséretében</p>
+          <h1 class="movie__title montserrat black">Válogass filmeink közül</h1>
+          <p class="movie__desc montserrat regular">Egy kis nasi kíséretében</p>
         </div>
 
         <div class="movie__right">

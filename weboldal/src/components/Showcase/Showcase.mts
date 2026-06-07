@@ -12,18 +12,21 @@ export default class Showcase extends HTMLElement {
     const text = this.innerText;
     this.innerHTML = "";
 
+    const imgContainer = document.createElement("div");
+    imgContainer.classList.add("showcase-image");
+
     const image = document.createElement("img");
     image.src = this.getAttribute("image") ?? "";
     image.alt =
       this.getAttribute("alt") ?? this.getAttribute("image") ?? "alt text";
-    image.classList.add("showcase-image");
+    imgContainer.appendChild(image);
 
     const container = document.createElement("div");
     container.classList.add("flex-direction-column");
 
     const title = document.createElement("components-title");
-    title.innerText = this.getAttribute("title") ?? "";
-    title.classList.add("komika");
+    title.innerText = this.getAttribute("card-title") ?? "";
+    title.classList.add("montserrat", "black");
     title.style.color = this.getAttribute("color") ?? "var(--text-primary)";
     if (imageOnLeft) {
       title.classList.add("text-start");
@@ -41,6 +44,6 @@ export default class Showcase extends HTMLElement {
     }
     paragraph.innerText = text;
     container.append(title, paragraph);
-    this.append(container, image);
+    this.append(container, imgContainer);
   }
 }
