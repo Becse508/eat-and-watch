@@ -9,6 +9,19 @@ main {
   margin: 0 auto;
 }
 
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--text-primary);
+}
+
 section:not(:last-of-type) {
   margin-bottom: 64px;
 }
