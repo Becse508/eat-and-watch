@@ -40,13 +40,19 @@ components-moviegrid {
 }
 
 @media screen and (max-width: 1200px) {
-  .movie-grid { grid-template-columns: repeat(5, 1fr); }
+  .movie-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .movie-grid { grid-template-columns: repeat(3, 1fr); }
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .movie-grid { grid-template-columns: repeat(2, 1fr); }
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

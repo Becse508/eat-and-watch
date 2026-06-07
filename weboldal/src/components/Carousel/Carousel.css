@@ -13,13 +13,13 @@
 }
 
 .movie__title {
-  font-size: 64px;
+  font-size: 78px;
   margin: 0 0 20px 0;
   line-height: 1.1;
 }
 
 .movie__desc {
-  font-size: 20px;
+  font-size: 32px;
   opacity: 0.7;
 }
 
@@ -55,11 +55,15 @@
     flex-direction: column;
     text-align: center;
     gap: 32px;
-    margin-bottom: 128px;
+    margin-bottom: 256px;
   }
   
   .movie__left {
     max-width: 100%;
+  }
+
+  .movie__title {
+    font-size: 64px;
   }
   
   .movie__right {

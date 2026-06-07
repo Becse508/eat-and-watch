@@ -50,14 +50,15 @@ components-showcase {
     flex-direction: column !important;
     gap: 24px;
     padding-bottom: 64px;
+    width: 90%;
   }
 
   components-title {
-    font-size: 48px;
+    font-size: 38px;
   }
 
   components-showcase:not(:last-of-type) {
-    border-bottom: 1px solid var(--text-secondary);
+    border-bottom: 1px solid var(--highlight);
   }
 
   .text-start,

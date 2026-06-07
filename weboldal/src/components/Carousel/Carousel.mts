@@ -36,7 +36,7 @@ export default class MovieCarousel extends HTMLElement {
     this.innerHTML = `
       <section class="movie">
         <div class="movie__left">
-          <h1 class="movie__title montserrat black">Válogass filmeink közül</h1>
+          <h1 class="movie__title montserrat black">Válogass filmjeink közül</h1>
           <p class="movie__desc montserrat regular">Egy kis nasi kíséretében</p>
         </div>
 
