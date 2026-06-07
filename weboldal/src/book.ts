@@ -78,10 +78,12 @@ function renderSeats(reservedTables: number[]) {
 
 function selectSeat(id: number, element: HTMLElement) {
   if (selectedSeats.includes(id)) {
-    selectedSeats = selectedSeats.filter(s => s !== id);
+    selectedSeats = [];
     element.classList.remove("selected");
   } else {
-    selectedSeats.push(id);
+    document.querySelectorAll(".seat.selected").forEach(el => el.classList.remove("selected"));
+    
+    selectedSeats = [id];
     element.classList.add("selected");
   }
   updatePriceDisplay();
@@ -93,7 +95,7 @@ function updatePriceDisplay() {
 
 bookBtn.addEventListener("click", async () => {
   if (selectedSeats.length === 0) {
-    NotificationElem.send("Figyelem", "Kérlek válassz ki legalább egy asztalt a foglaláshoz!", "#dd862f");
+    NotificationElem.send("Figyelem", "Kérlek válassz ki egy asztalt a foglaláshoz!", "#dd862f");
     return;
   }
   if (!currentScreeningId) return;
@@ -112,7 +114,7 @@ bookBtn.addEventListener("click", async () => {
     window.location.href = `/ticket-success?movieId=${movieId}&code=${encodeURIComponent(ticketCodes[0])}`;
   } catch (err) {
     console.error(err);
-    NotificationElem.send("Hiba", "Nem sikerült lefoglalni a jegyeket.", "red");
+    NotificationElem.send("Hiba", "Nem sikerült lefoglalni a jegyet.", "red");
   }
 });
 
