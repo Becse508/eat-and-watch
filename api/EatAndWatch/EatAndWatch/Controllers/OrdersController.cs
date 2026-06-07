@@ -43,6 +43,11 @@ namespace EatAndWatch.Controllers
                     error = "EmptyOrder",
                     message = "You cannot post an empty order."
                 });
+
+            if (orderDto.Room < 1 || orderDto.Room > 3)
+                return BadRequest("Invalid room number");
+            if (orderDto.Table < 1 || orderDto.Table > 22)
+                return BadRequest("Invalid table number");
             
 
             var orderProducts = new List<OrderProduct>();
@@ -71,7 +76,9 @@ namespace EatAndWatch.Controllers
             var order = new Order {
                 Transaction = transaction,
                 Products = orderProducts,
-                CouponApplied = orderDto.CouponApplied ?? false
+                CouponApplied = orderDto.CouponApplied ?? false,
+                Room = orderDto.Room,
+                Table = orderDto.Table
             };
 
             await _db.Orders.AddAsync(order);

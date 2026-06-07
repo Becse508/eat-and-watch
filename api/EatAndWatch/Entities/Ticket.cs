@@ -16,6 +16,7 @@ namespace Entities
         [JsonIgnore]
         public int? ScreeningId { get; set; }
         public MovieScreening? Screening { get; set; }
+        public int Table { get; set; }
         public string? QRCode { get; set; }
         [JsonIgnore]
         public DateTime? UsedAt { get; set; }
