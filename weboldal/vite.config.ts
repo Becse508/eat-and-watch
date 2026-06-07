@@ -28,6 +28,7 @@ export default defineConfig({
         ticket: "ticket.html",
         adminRooms: "admin-rooms.html",
         adminRoomEdit: "admin-room-edit.html",
+        scanner: "scanner.html"
       },
     },
   },

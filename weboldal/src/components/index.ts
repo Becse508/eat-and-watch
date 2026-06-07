@@ -11,6 +11,7 @@ import ThemeToggle from "./ThemeToggle/ThemeToggle.mts";
 import MovieGrid from "./MovieGrid/MovieGrid.mts"
 import StarRating from "./StarRating/StarRating.mts";
 import MovieCarousel from "./Carousel/Carousel.mts";
+import { TicketValidatorComponent } from "./TicketValidator/TicketValidator.mts";
 
 const elements = [
   { name: "navbar", element: Navbar },
@@ -26,6 +27,7 @@ const elements = [
   { name: "moviegrid", element: MovieGrid },
   { name: "starrating", element: StarRating },
   { name: "moviecarousel", element: MovieCarousel },
+  { name: "ticket-validator", element: TicketValidatorComponent}
 ];
 
 elements.map(({ name, element }) => customElements.define("components-" + name, element));
