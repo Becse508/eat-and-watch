@@ -1,6 +1,7 @@
 ﻿using EatAndWatch.Database;
 using Entities;
 using Entities.DTO;
+using Entities.DTO.Get;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -75,17 +76,33 @@ namespace EatAndWatch.Controllers
 
             if (!TicketTools.ValidateTicket(id, parts[1]))
                 return BadRequest("Invalid");
-
-            var ticket = await _db.Tickets.FindAsync(id);
-            if (ticket == null)
+            Ticket ticket;
+            try
+            {
+                ticket = await _db.Tickets.Include(x => x.Screening).FirstAsync(x => x.Id == id);
+            }
+            catch
+            {
                 return BadRequest("Invalid");
+            }
 
             if (ticket.IsUsed)
                 return BadRequest("Already used");
 
             ticket.UsedAt = DateTime.UtcNow;
             await _db.SaveChangesAsync();
-            return Ok();
+            return Ok(new
+            {
+                ticket.Table,
+                Screening = new ScreeningNoMovieDto()
+                {
+                    Id = ticket.Screening.Id,
+                    Price = ticket.Screening.Price,
+                    Room = ticket.Screening.Room,
+                    TableReservation = ticket.Screening.TableReservation,
+                    Time = ticket.Screening.Time
+                }
+            });
         }
 
 
