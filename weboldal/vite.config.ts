@@ -26,6 +26,8 @@ export default defineConfig({
         book: "book.html",
         ticketSuccess: "ticket-success.html",
         ticket: "ticket.html",
+        adminRooms: "admin-rooms.html",
+        adminRoomEdit: "admin-room-edit.html",
       },
     },
   },

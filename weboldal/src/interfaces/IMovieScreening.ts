@@ -6,4 +6,5 @@ export default interface IMovieScreening {
     price: number;
     movie: IMovie;
     tableReservation: number[];
+    room: number;
 }
