@@ -1,28 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace EatAndWatch.Migrations
 {
     /// <inheritdoc />
-    public partial class migrans4 : Migration
+    public partial class migrans__ : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "DeletedAt",
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DeleteTime",
                 table: "Orders",
-                newName: "DeleteTime");
+                type: "TEXT",
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            migrationBuilder.DropColumn(
                 name: "DeleteTime",
-                table: "Orders",
-                newName: "DeletedAt");
+                table: "Orders");
         }
     }
 }

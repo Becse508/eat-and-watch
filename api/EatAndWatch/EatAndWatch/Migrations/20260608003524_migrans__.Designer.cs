@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EatAndWatch.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260608002030_migrans4")]
-    partial class migrans4
+    [Migration("20260608003524_migrans__")]
+    partial class migrans__
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

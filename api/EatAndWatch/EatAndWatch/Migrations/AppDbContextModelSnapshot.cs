@@ -215,6 +215,9 @@ namespace EatAndWatch.Migrations
                     b.Property<bool>("CouponApplied")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("DeleteTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Room")
                         .HasColumnType("INTEGER");
 
