@@ -21,7 +21,9 @@ const titleEl = document.getElementById("movie-title")!;
 const seatsContainer = document.getElementById("seats-container")!;
 const priceDisplay = document.getElementById("price-display")!;
 const bookBtn = document.getElementById("book-btn")!;
-const screeningContainer = document.getElementById("screening-container")!;
+const screeningContainer = document.getElementById("screening-container");
+const selectionGrid = document.querySelector(".selection-grid") as HTMLElement | null;
+const projector = document.querySelector(".screen-indicator")! as HTMLElement;
 
 async function init() {
   if (!movieId) {
@@ -42,7 +44,9 @@ async function init() {
       bookBtn.style.display = "flex";
     } else {
       titleEl.textContent = "Nincs elérhető vetítés ehhez a filmhez.";
-      screeningContainer.innerHTML = "";
+      if(screeningContainer) screeningContainer.innerHTML = "";
+      if(selectionGrid) selectionGrid.style.display = "none";
+      projector.style.display = "none";
       bookBtn.style.display = "none";
     }
   } catch (err) {
