@@ -21,6 +21,7 @@ let movies: IMovie[] = [];
 let selectedMovieId: number | null = null;
 let selectedRoom = parseInt(initialRoom, 10);
 let isCurrentlyPlaying = false;
+let price: number | null = null;
 
 function parseLength(lengthStr: string): number {
   if (!lengthStr) return 0;
@@ -103,6 +104,7 @@ async function loadData() {
       const screening = await res.json();
       selectedRoom = screening.room;
       selectedMovieId = screening.movie.id;
+      price = screening.price;
       
       const st = new Date(screening.time);
       startTimeInput.value = toLocalISOString(st);
@@ -138,7 +140,7 @@ saveBtn.addEventListener("click", async () => {
   const payload = {
     movieId: selectedMovieId,
     time: utcDate.toISOString(),
-    price: 1500, // Alapértelmezett ár
+    price: price || 3000,
     room: selectedRoom
   };
 

@@ -40,7 +40,7 @@ function renderRooms(screenings: IScreening[]) {
       } else if (now < startTime && !nextScreening) {
         nextScreening = s;
       } else if (now > endTime && now.getTime() - endTime.getTime() < 60 * 60000) {
-        recentlyEnded = true; // Ended in the last hour
+        recentlyEnded = true;
       }
     }
 
