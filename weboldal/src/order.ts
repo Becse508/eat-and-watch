@@ -26,8 +26,8 @@ const cont = document.getElementById("products");
 const cartTextEl = document.querySelector(".cart-btn a span");
 
 const categories = [
-  { type: 0, name: "Ételek" },
-  { type: 1, name: "Italok" },
+  { type: 0, name: "Italok" },
+  { type: 1, name: "Ételek" },
   { type: 2, name: "Köret" },
 ];
 
