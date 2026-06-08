@@ -8,6 +8,7 @@ const grid = document.getElementById("movies-grid") as MovieGrid;
 const searchInput = document.getElementById("search-input") as HTMLInputElement;
 const minLengthInput = document.getElementById("length-min") as HTMLInputElement;
 const maxLengthInput = document.getElementById("length-max") as HTMLInputElement;
+const adultCheckbox = document.getElementById("adult-checkbox") as HTMLInputElement;
 const noResultsEl = document.getElementById("no-results");
 
 let allMovies: IMovie[] = [];
@@ -27,6 +28,7 @@ function filterMovies() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const minLength = minLengthInput.value ? parseInt(minLengthInput.value, 10) : 0;
     const maxLength = maxLengthInput.value ? parseInt(maxLengthInput.value, 10) : Infinity;
+    const showAdultContent = adultCheckbox.checked;
 
     const filtered = allMovies.filter(movie => {
         const matchesSearch = movie.name.toLowerCase().includes(searchTerm) || 
@@ -34,8 +36,10 @@ function filterMovies() {
         
         const movieMinutes = parseLengthToMinutes(movie.length);
         const matchesLength = movieMinutes >= minLength && movieMinutes <= maxLength;
+        const matchesAdult = showAdultContent ? true : movie.ageRestriction < 18;
+        
 
-        return matchesSearch && matchesLength;
+        return matchesSearch && matchesLength && matchesAdult;
     });
 
     if (grid) {
@@ -58,6 +62,7 @@ async function init() {
     searchInput?.addEventListener("input", filterMovies);
     minLengthInput?.addEventListener("input", filterMovies);
     maxLengthInput?.addEventListener("input", filterMovies);
+    adultCheckbox?.addEventListener("change", filterMovies);
 }
 
 init();
