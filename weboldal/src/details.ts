@@ -67,10 +67,12 @@ async function init() {
           <span class="metadata-value">${movie.ageRestriction}</span>
         </div>
 
+        ${movie.rating > 0 ? `
         <div class="rating-section">
           <components-starrating value="${movie.rating / 2}" max="5"></components-starrating>
           <span class="rating-text inter">A felhasználók ${percentage}%-ának tetszett ez a film.</span>
         </div>
+        ` : ''}
 
         <div class="action-row">
             <div class="age-restriction-circle montserrat">${movie.ageRestriction}</div>

@@ -23,4 +23,6 @@ export interface Order {
   id?: number | string;
   transaction?: { cashier?: string; tip?: number; amount?: number } | null;
   products?: OrderProduct[];
+  room?: number;
+  table?: number;
 }
