@@ -17,7 +17,6 @@ export default defineConfig({
       input: {
         main: "index.html",
         order: "order.html",
-        done: "done.html",
         orders: "orders.html",
         cart: "cart.html",
         legal: "legal.html",

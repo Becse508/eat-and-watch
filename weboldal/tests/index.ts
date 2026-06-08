@@ -6,7 +6,7 @@ const titleContainsRestaurantName = async (driver: WebDriver) => {
   const title = await driver.getTitle();
 
   assert.equal(
-    title.startsWith("MegDánelz"),
+    title.startsWith("Eat&Watch"),
     true,
     "Az oldal címe nem tartalmazza az étterem nevét"
   );
@@ -125,8 +125,8 @@ const runTest = async () => {
       await test(driver);
       await driver.get("http://localhost:5173/legal");
       await test(driver);
-      await driver.get("http://localhost:5173/done");
-      await test(driver);
+      // await driver.get("http://localhost:5173/done");
+      // await test(driver);
     }
     for (const testFunction of testFunctions) {
       await driver.get("http://localhost:5173");
