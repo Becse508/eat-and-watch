@@ -4,6 +4,10 @@ namespace Entities
 {
     public class Order
     {
+        [JsonIgnore]
+        public DateTime? DeleteTime { get; set; }
+        [JsonIgnore]
+        public bool IsDeleted => DeleteTime.HasValue;
         public int Id { get; set; } // PK
 
         [JsonIgnore]

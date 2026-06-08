@@ -135,6 +135,15 @@ updateTotal();
 async function submitOrder() {
   // if (!cont || getCart().length === 0) return;
 
+  const params = new URLSearchParams(window.location.search);
+  const room = params.get("room");
+  const table = params.get("table");
+
+  if(!room || !table) {
+    NotificationElem.send("Hiba", "Érvénytelen kérés!", "red");
+    return;
+  }
+
   const orderProducts = getCart()
     .map((op) => {
       const qty = op.quantity;
@@ -153,6 +162,8 @@ async function submitOrder() {
       cashier: "website",
       tip: 0,
     },
+    room: Number(room),
+    table: Number(table),
     orderProducts,
   };
 
@@ -187,7 +198,7 @@ async function submitOrder() {
       return total + timePerItem * op.quantity;
     }, 0);
 
-    window.location.href = `/done?minutes=${cookingTime}`;
+    window.location.href = `/order?room=${room}&table=${table}`;
   } catch (err) {
     console.error(err);
     alert("Nem sikerült leadni a rendelést. Próbáld újra.");

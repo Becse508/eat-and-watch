@@ -88,11 +88,12 @@ namespace EatAndWatch.Controllers
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id) {
-            var removed = await _db.Orders.Where(x => x.Id == id)
-                                          .ExecuteDeleteAsync();
+            var order = await _db.Orders.FindAsync(id);
+            if (order == null)
+                return NotFound("Order not found");
 
-            if (removed == 0)
-                return NotFound();
+            order.DeleteTime = DateTime.UtcNow;
+            await _db.SaveChangesAsync();
             return Ok();
         }
     }

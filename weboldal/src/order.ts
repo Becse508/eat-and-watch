@@ -7,6 +7,7 @@ import type { Product } from "./types.ts";
 import { addToCart, getCart } from "./helpers/cart.ts";
 import NotificationElem from "./components/Notification/NotificationElem.mts";
 import capitalize from "./helpers/capitalize.ts";
+import type Button from "./components/Button/Button.mts";
 
 async function loadProducts(): Promise<Product[]> {
   try {
@@ -21,14 +22,32 @@ async function loadProducts(): Promise<Product[]> {
   }
 }
 
+  const params = new URLSearchParams(window.location.search);
+  const room = params.get("room");
+  const table = params.get("table");
+
+  if(!room || !table) {
+    NotificationElem.send("Hiba", "Érvénytelen kérés!", "red");
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 3000);
+  }
+
+  const cartBtn = document.querySelector(".cart-btn") as Button;
+  cartBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = `/cart?room=${room}&table=${table}`;
+  });
+
 const products = await loadProducts();
 const cont = document.getElementById("products");
 const cartTextEl = document.querySelector(".cart-btn a span");
 
+
 const categories = [
   { type: 0, name: "Italok" },
   { type: 1, name: "Ételek" },
-  { type: 2, name: "Köret" },
+  { type: 2, name: "Édességek" },
 ];
 
 categories.forEach((category) => {

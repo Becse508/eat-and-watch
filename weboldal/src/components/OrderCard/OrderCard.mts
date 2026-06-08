@@ -18,7 +18,7 @@ export default class OrderCard extends HTMLElement {
       return;
     }
 
-    const { id, transaction, products = [] } = order;
+    const { id, transaction, products = [], room, table } = order;
 
     const card = document.createElement("article");
     card.className = "order-card";
@@ -75,13 +75,8 @@ export default class OrderCard extends HTMLElement {
     if (transaction?.cashier || transaction?.tip !== undefined) {
       const meta = document.createElement("div");
       meta.className = "order-card__meta";
-      const cashier = transaction.cashier
-        ? `Pult: ${transaction.cashier}`
-        : null;
-      const tip =
-        typeof transaction.tip === "number"
-          ? `Borravaló: ${transaction.tip} Ft`
-          : null;
+      const cashier =  `Terem: ${room}`
+      const tip =`Asztal: ${table}`
       meta.textContent = [cashier, tip].filter(Boolean).join(" · ");
       if (meta.textContent) card.append(meta);
     }

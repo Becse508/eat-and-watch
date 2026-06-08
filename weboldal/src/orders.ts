@@ -15,6 +15,8 @@ interface Order {
   customer?: { name?: string } | null;
   transaction?: { cashier?: string; tip?: number } | null;
   products?: OrderProduct[];
+  room?: number;
+  table?: number;
 }
 
 const container = document.getElementById("orders-list");
