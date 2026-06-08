@@ -132,9 +132,12 @@ saveBtn.addEventListener("click", async () => {
     return;
   }
 
+  const localDate = new Date(startTimeInput.value);
+  const utcDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+  
   const payload = {
     movieId: selectedMovieId,
-    time: new Date(startTimeInput.value).toISOString(),
+    time: utcDate.toISOString(),
     price: 1500, // Alapértelmezett ár
     room: selectedRoom
   };
